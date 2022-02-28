@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="shortcut icon" href="./assets/mini_logo.png">
+    <title>Les petits plats</title>
+</head>
+
+<body class="body">
+    <header>
+        <div class="header">
+            <img class="header__logo" src="./assets/logo.png" alt="Logo Les petits plats">
+        </div>
+        <div class="search__bar">
+            <input type="search" class="search__bar__input" aria-label="Search through site content"
+                placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
+            <button class="search__bar__submit" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </header>
+    <main class="search">
+        <aside class="search__filter">
+        </aside>
+        <nav class="search__area">
+            <form class="first-filter">
+                <div class="search__area__form ingredients__form">
+                    <input type="search" class="ingredients-input filter-input" placeholder="Ingrédients">
+                    <button class="search__area__form__submit ingredients__button__down" type="button">
+                        <i class="fas fa-chevron-down ingredients__chevron__down"></i>
+                    </button> 
+                </div>
+                <ul class="list-content ingredients-content"></ul>
+            </form>
+            <form class="search__area__form devices__form">
+                <div class="filter-button">
+                    <input type="search" class="appliances-input filter-input" placeholder="Appareils">
+                    <button class="search__area__form__submit  devices__button__down" type="button">
+                        <i class="fas fa-chevron-down devices__chevron__down"></i>
+                    </button>
+                </div>
+                <ul class="list-content appliances-content"></ul>
+            </form>
+            <form class="search__area__form ustensiles__form">
+                <div class="filter-button">
+                    <input type="search" class="ustensils-input filter-input" placeholder="Ustensiles">
+                    <button class="search__area__form__submit  ustensiles__button__down" type="button">
+                        <i class="fas fa-chevron-down ustensiles__chevron__down"></i>
+                    </button>
+                </div>
+                <ul class="list-content ustensils-content"></ul>
+            </form>
+        </nav>
+        <section class="main__part">
+        </section>
+    </main>
+    <script src="./scripts/main.js"></script>
+</body>
+
+</html>

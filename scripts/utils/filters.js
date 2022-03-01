@@ -1,6 +1,6 @@
 import { displayRecipes, lowerCaseNormalize } from './FunctionalFunction.js';
 
-export { generateFilterList, searchingFiltersLists,  }
+export { generateFilterList, searchingFiltersLists, removeTag,  }
 
 
 // Generate items for filters' lists
@@ -118,6 +118,12 @@ function displayrecipesWithTagSelected (recipesList) {
     }
 }
 
+// Model to create tag
+
+function creatingTag (item) {
+
+}
+
 // Avoid redisplaying entire tags array
 
 function resTags () {
@@ -139,6 +145,30 @@ function addTag () {
 
 // Display tag
 
+function displayTag (recipesList) {
+    let itemList = document.querySelectorAll('.list__item');
+    itemList.forEach((item) => {
+      item.addEventListener('click', (el) => {
+        const selectedItem = el.target.innerHTML;
+        if (!tagsSelectedArray.includes(selectedItem)) {
+            tagsSelectedArray.push(selectedItem);
+        }
+        addTag();
+        displayrecipesWithTagSelected(recipesList);
+      });
+    });
+  }
 
 // Remove tag
 
+function removeTag (recipesList) {
+  document.addEventListener('click', (el) => {
+    if (el.target.className === 'tag__close__button') {
+      const value = el.target.getAttribute('data-item');
+      const index = tagsSelectedArray.indexOf(value);
+      tagsSelectedArray = [...tagsSelectedArray.slice(0, index), ...tagsSelectedArray.slice(index + 1)];
+      addTag();
+      displayrecipesWithTagSelected(recipesList);
+    }
+  });
+}

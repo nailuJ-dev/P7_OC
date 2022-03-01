@@ -1,7 +1,6 @@
 import { recipes } from './data/recipes.js';
-import { BuildMainRecipeCards } from './utils/constructor.js';
-import { lowerCaseNormalize, displayRecipes } from './utils/FunctionalFunction.js';
-import { generateFilterList } from './utils/filters.js';
+import { displayRecipes } from './utils/FunctionalFunction.js';
+import { generateFilterList, searchingFiltersLists } from './utils/filters.js';
 import { searchAlgo } from './utils/searchAlgo.js'
 
 // Get datas and launch init
@@ -23,4 +22,9 @@ function init (recipesList) {
   displayRecipes(recipesList);
   searchAlgo(recipesList);
   generateFilterList(recipesList);
+
+  searchingFiltersLists(recipesList, generateFilterList);
 }
+
+// launch app
+getDatas();

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css">
     <link rel="shortcut icon" href="./assets/mini_logo.png">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.4/css/all.css'>
     <title>Les petits plats</title>
 </head>
 
@@ -27,32 +28,50 @@
         </aside>
         <!-- reprendre modele précédent avec hide / display div name et div input -->
         <nav class="search__area">
-            <form class="first-filter">
-                <div class="search__area__form ingredients__form">
-                    <input type="search" class="ingredients-input filter-input" placeholder="Ingrédients">
+            <form class="search__area__form ingredients__form">
+                <div class="search__area__form__down ingredients__form__down">
+                    <div class="ingredients__title filter__title">Ingrédients</div>
+                    <button class="search__area__form__submit  ingredients__button__down" type="button">
+                        <i class="fas fa-chevron-down ingredients__chevron__down"></i>
+                    </button>
+                </div>
+                <div class="search__area__form__up ingredients__form__up">
+                    <input type="search" class="ingredients__input filter__input" placeholder="Rechercher un ingrédient">
                     <button class="search__area__form__submit ingredients__button__down" type="button">
                         <i class="fas fa-chevron-down ingredients__chevron__down"></i>
                     </button> 
                 </div>
-                <ul class="list-content ingredients-content"></ul>
+                <ul class="list__content ingredients__content"></ul>
             </form>
             <form class="search__area__form devices__form">
-                <div class="filter-button">
-                    <input type="search" class="appliances-input filter-input" placeholder="Appareils">
+                <div class="search__area__form__down devices__form__down">
+                    <div class="devices__title filter__title">Appareils</div>
                     <button class="search__area__form__submit  devices__button__down" type="button">
                         <i class="fas fa-chevron-down devices__chevron__down"></i>
                     </button>
                 </div>
-                <ul class="list-content appliances-content"></ul>
+                <div class="search__area__form__up devices__form__up">
+                    <input type="search" class="devices__input filter__input" placeholder="Rechercher un appareil">
+                    <button class="search__area__form__submit  devices__button__up" type="button">
+                        <i class="fas fa-chevron-up devices__chevron__up"></i>
+                    </button>
+                </div>
+                <ul class="list__content devices__content"></ul>
             </form>
             <form class="search__area__form ustensiles__form">
-                <div class="filter-button">
-                    <input type="search" class="ustensils-input filter-input" placeholder="Ustensiles">
+                <div class="search__area__form__down ustensiles__form__down">
+                    <div class="ustensils__title filter__title">Ustensiles</div>
                     <button class="search__area__form__submit  ustensiles__button__down" type="button">
                         <i class="fas fa-chevron-down ustensiles__chevron__down"></i>
                     </button>
                 </div>
-                <ul class="list-content ustensils-content"></ul>
+                <div class="search__area__form__up ustensiles__form__up">
+                    <input type="search" class="ustensiles__input filter__input" placeholder="Rechercher un ustensile">
+                    <button class="search__area__form__submit  ustensiles__button__up" type="button">
+                        <i class="fas fa-chevron-up ustensiles__chevron__up"></i>
+                    </button>
+                </div>
+                <ul class="list__content ustensiles__content"></ul>
             </form>
         </nav>
         <section class="main__part">

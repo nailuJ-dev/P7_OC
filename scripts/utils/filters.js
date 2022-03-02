@@ -13,14 +13,14 @@ function generateFilterList (recipesList, ingredientsLi, applianceLi, ustensilsL
   recipesList.forEach((recipe) => {
     recipe.ingredients.map(el => ingredients.push(el.ingredient));
     appliances.push(recipe.appliance);
-    recipe.ustensiles.map(el => ustensiles.push(el));
+    recipe.ustensils.map(el => ustensiles.push(el));
   });
 
   ingredientsLi = [...new Set(ingredients)].sort();
   applianceLi = [...new Set(appliances)].sort();
   ustensilsLi = [...new Set(ustensiles)].sort();
 
-  createFiltersLists(recipesList, ingredientsLi, applianceLi, ustensilsLi);
+  creatingFilterLi(recipesList, ingredientsLi, applianceLi, ustensilsLi);
 
   return { ingredientsLi, applianceLi, ustensilsLi }
 }
@@ -39,15 +39,15 @@ function filtersListsBuilder (ItemsList, ItemsListContent) {
 // Create filters' lists
 
 function creatingFilterLi (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
-    const ingredientsWrapper = document.querySelector('ingredients__content');
+    const ingredientsWrapper = document.querySelector('.ingredients__content');
     ingredientsWrapper.innerHTML = '';
     filtersListsBuilder(ingredientsLi, ingredientsWrapper);
 
-    const applianceWrapper = document.querySelector('devices__content');
+    const applianceWrapper = document.querySelector('.devices__content');
     applianceWrapper.innerHTML = '';
     filtersListsBuilder(applianceLi, applianceWrapper);
 
-    const ustensilsWrapper = document.querySelector('ustensiles__content');
+    const ustensilsWrapper = document.querySelector('.ustensiles__content');
     ustensilsWrapper.innerHTML = '';
     filtersListsBuilder(ustensilsLi, ustensilsWrapper);
 
@@ -58,7 +58,7 @@ function creatingFilterLi (recipesList, ingredientsLi, applianceLi, ustensilsLi)
 
 function searchingFiltersLists (recipesList, generateFilterList) {
     const filterItems = generateFilterList(recipesList);
-    const filterInput = document.querySelectorAll('filter__input');
+    const filterInput = document.querySelectorAll('.filter__input');
 
     filterInput.forEach((input) => {
         input.addEventListener('keyup', (e) => {
@@ -97,7 +97,7 @@ let tagsSelectedArray = [];
 // Display recipes with tags
 
 function displayrecipesWithTagSelected (recipesList) {
-    const recipesPart = document.querySelector('main__part');
+    const recipesPart = document.querySelector('.main__part');
     const tags = Array.from(document.querySelectorAll('.tag__item'));
     const tagsFiltered = recipesList.filter((recipe) => {
         return tags.every(item => {

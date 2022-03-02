@@ -1,0 +1,116 @@
+@mixin input($type) {
+    border-radius: 5px 0px 0px 5px;
+    border: none;
+    color: white;
+    margin: 0;
+    padding: 0 0 0 1rem;
+    width: 100%;
+    &:focus  {
+        outline: none;
+    }
+
+    @if $type == ingredients {
+        background-color: $blue;
+        border-radius: 5px 0 0 5px;
+        &::placeholder {
+            color: white;
+        }
+    }
+
+    @if $type == devices {
+        background-color: $green;
+        border-radius: 5px 0 0 5px;
+        &::placeholder {
+            color: white;
+        }
+    }
+
+    @if $type == ustensiles {
+        background-color: $red;
+        border-radius: 5px 0 0 5px;
+        &::placeholder {
+            color: white;
+        }
+    }
+
+    @if $type == searchBar {
+        background-color: $primaryGrey;
+        color: black;
+        &::placeholder {
+            color: $secondaryGrey;
+        }
+    }
+}
+
+@mixin button($type) {
+    border: none;
+    margin: 0;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    color: white;
+
+    @if $type == ingredients {
+        background-color: $blue;
+        border-radius: 0 5px 5px 0;
+}
+
+    @if $type == devices {
+        background-color: $green;
+        border-radius: 0 5px 5px 0;
+}
+
+    @if $type == ustensiles {
+        background-color: $red;
+        border-radius: 0 5px 5px 0;
+    }
+
+    @if $type == search {
+        background-color: $primaryGrey;
+        border-radius: 0 5px 5px 0;
+        color: black;
+    }
+}
+
+@mixin filterdiv($type) {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1.5rem;
+    border: none;
+    align-items: center;
+    color: white;
+    margin: 0;
+    padding: 0 0 0 1rem;
+    width: 100%;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -ms-border-radius: 5px 5px 5px 5px;
+    -o-border-radius: 5px 5px 5px 5px;
+    
+    @if $type==ingredients {
+        background-color: $blue;
+    }
+
+    @if $type == devices {
+        background-color: $green;
+    }
+
+    @if $type == ustensiles {
+        background-color: $red;
+    }
+}
+
+@mixin form() {
+    display: flex;
+    height: 70px;
+    width: 100%;
+}
+
+@mixin getGrid($columns, $rows, $gap) {
+    align-items: center;
+    display: grid;
+    gap: $gap;
+    grid-template-columns: $columns;
+    grid-template-rows: $rows;
+    justify-content: center;
+}

@@ -1,4 +1,4 @@
-import { BuildMainRecipeCards } from "./constructor.js";
+import { BuildMainRecipeCards } from './constructor.js';
 
 export { lowerCaseNormalize, displayRecipes }
 

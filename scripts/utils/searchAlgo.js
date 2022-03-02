@@ -1,4 +1,5 @@
-import { lowerCaseNormalize, displayRecipes, generateFilterList } from './FunctionalFunction.js';
+import { lowerCaseNormalize, displayRecipes } from './FunctionalFunction.js';
+import { generateFilterList } from './filters.js'
 import { recipes } from '../data/recipes.js';
 
 export { searchAlgo }

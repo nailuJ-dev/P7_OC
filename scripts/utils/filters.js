@@ -51,7 +51,7 @@ function creatingFilterLi (recipesList, ingredientsLi, applianceLi, ustensilsLi)
     ustensilsWrapper.innerHTML = '';
     filtersListsBuilder(ustensilsLi, ustensilsWrapper);
 
-    displayTag(recipesList);
+    displayTag(recipesList, ingredientsLi, applianceLi, ustensilsLi);
 }
 
 // Searching on filters' lists
@@ -88,7 +88,30 @@ function searchingFiltersLists (recipesList, generateFilterList) {
     });
 }
 
+// Display & close filters
 
+function displayFilters (obj, objlist, item, filterTarget) {
+    if (filterTarget.includes(item) && obj.isFilterOpen == false) {
+        for (let ob of objlist) {
+            ob.content.style.display = 'none';
+            ob.input.style.width = 'null';
+            ob.isFilterOpen = false;
+        }
+        ob.content.style.display = 'flex';
+        ob.input.style.width = '29rem';
+        ob.isFilterOpen = true;
+    } else if (filterTarget.includes(item) && obj.isFilterOpen == true) {
+        ob.content.style.display = 'none';
+        ob.input.style.width = 'null';
+        ob.isFilterOpen = false;
+    };
+}
+
+// Close & display with click
+
+function displayFiltersInit {
+    
+}
 
 // Create, Add and remove tags, and display recipes with tags
 
@@ -120,8 +143,26 @@ function displayrecipesWithTagSelected (recipesList) {
 
 // Model to create tag
 
-function creatingTag (item) {
+function creatingTag (item, ingredientsLi, applianceLi, ustensilsLi) {
+    const tag = document.createElement('div');
+    tag.className = 'tag__item';
+    const name = document.createElement('span');
+    name.className = 'tag__item__text';
+    name.innerHTML = item;
+    const closeButton = document.createElement('i');
+    closeButton.classList.add('fas fa-times-circle tag__close__button');
+    closeButton.setAttribute('data-item', item);
+    if (ingredientsLi.includes(item.textContent)) {
+        name.classList.add('ingredients__item');
+    } else if (applianceLi.includes(item.textContent)) {
+        name.classList.add('devices__item');
+    } else if (ustensilsLi.includes(item.textContent)) {
+        name.classList.add('ustensiles__item');
+    };
 
+    tag.appendChild(name);
+    tag.appendChild(closeButton);
+    return tag;
 }
 
 // Avoid redisplaying entire tags array
@@ -134,18 +175,18 @@ function resTags () {
 
 // Create tag from model
 
-function addTag () {
+function addTag (ingredientsLi, applianceLi, ustensilsLi) {
     resTags();
     const searchTag = document.querySelector('.search__tag');
     tagsSelectedArray.forEach((tag) => {
-        const input = creatingTag(tag);
+        const input = creatingTag(tag, ingredientsLi, applianceLi, ustensilsLi);
         searchTag.appendChild(input);
     });
 }
 
 // Display tag
 
-function displayTag (recipesList) {
+function displayTag (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
     let itemList = document.querySelectorAll('.list__item');
     itemList.forEach((item) => {
       item.addEventListener('click', (el) => {
@@ -153,22 +194,21 @@ function displayTag (recipesList) {
         if (!tagsSelectedArray.includes(selectedItem)) {
             tagsSelectedArray.push(selectedItem);
         }
-        addTag();
-        displayrecipesWithTagSelected(recipesList);
+        addTag(ingredientsLi, applianceLi, ustensilsLi);
+        displayrecipesWithTagSelected(recipesList); //replace recipeList by TagsSelectedArray
       });
     });
   }
 
 // Remove tag
 
-function removeTag (recipesList) {
+function removeTag (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
   document.addEventListener('click', (el) => {
     if (el.target.className === 'tag__close__button') {
       const value = el.target.getAttribute('data-item');
-      const index = tagsSelectedArray.indexOf(value);
-      tagsSelectedArray = [...tagsSelectedArray.slice(0, index), ...tagsSelectedArray.slice(index + 1)];
-      addTag();
-      displayrecipesWithTagSelected(recipesList);
+      tagsSelectedArray = tagsSelectedArray.filter(item => item !== value);
+      addTag(ingredientsLi, applianceLi, ustensilsLi);
+      displayrecipesWithTagSelected(recipesList); //replace recipeList by TagsSelectedArray
     }
   });
 }

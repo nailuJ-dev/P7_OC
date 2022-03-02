@@ -23,7 +23,7 @@ class BuildMainRecipeCards {
       <div class="recipe__card__section">
         <div class="recipe__card__header">
         <h2 class="recipe__card__header__title">${this.name}</h2>
-          <p class="time"><i class="fas fa-clock recipe__card__header__icon"></i> ${
+          <p class="recipe__card__header__time"><i class="fas fa-clock recipe__card__header__icon"></i> ${
             this.time
           } min</p>
         </div>

@@ -19,7 +19,7 @@ body {
 	justify-content: center;
 	margin: 1rem;
     &__logo {
-        width: 16rem;
+        width: 12rem;
     }
 }
 
@@ -40,18 +40,6 @@ body {
         gap: 0.5rem;
         &__form {
             @include form();
-
-            &__down {
-                
-
-            }
-
-            &__up {
-                display: none;
-            }
-            ul {
-                display: none;
-            }
         }
     }
 }
@@ -60,12 +48,50 @@ body {
     &__form {
         &__down {
             @include filterdiv(ingredients);
+            justify-content: space-between;
+        }
+        &__up {
+            @include filterdiv(ingredients);
+            justify-content: space-between;
         }
     }
     &__button {
         &__down {
             @include button(ingredients);
         }
+        &__up {
+            @include button(ingredients);
+            border-radius: 0 5px 0 0 ;
+            -webkit-border-radius: 0 5px 0 0 ;
+            -moz-border-radius: 0 5px 0 0 ;
+            -ms-border-radius: 0 5px 0 0 ;
+            -o-border-radius: 0 5px 0 0 ;
+        }
+    }
+    &__content {
+        background-color: $blue;
+        color: white;
+        padding: 1rem;
+        border-radius: 0 0 5px 5px;
+        margin: 0;
+        -webkit-border-radius: 0 0 5px 5px;
+        -moz-border-radius: 0 0 5px 5px;
+        -ms-border-radius: 0 0 5px 5px;
+        -o-border-radius: 0 0 5px 5px;
+        overflow-y: auto;
+        max-height: 35vh;
+        &::-webkit-scrollbar {
+            background-color: $blue;
+            border-radius: 0 0 5px 0;
+            -webkit-border-radius: 0 0 5px 0;
+            -moz-border-radius: 0 0 5px 0;
+            -ms-border-radius: 0 0 5px 0;
+            -o-border-radius: 0 0 5px 0;
+        }
+    }
+    &__displayed__results {
+        display: none;
+        flex-direction: column;
     }
 }
 
@@ -73,12 +99,50 @@ body {
     &__form {
         &__down {
             @include filterdiv(devices);
+            justify-content: space-between;
+        }
+        &__up {
+            @include filterdiv(devices);
+            justify-content: space-between;
         }
     }
     &__button {
         &__down {
             @include button(devices);
         }
+        &__up {
+            @include button(devices);
+            border-radius: 0 5px 0 0 ;
+            -webkit-border-radius: 0 5px 0 0 ;
+            -moz-border-radius: 0 5px 0 0 ;
+            -ms-border-radius: 0 5px 0 0 ;
+            -o-border-radius: 0 5px 0 0 ;
+        }
+    }
+    &__content {
+        background-color: $green;
+        color: white;
+        padding: 1rem;
+        border-radius: 0 0 5px 5px;
+        margin: 0;
+        -webkit-border-radius: 0 0 5px 5px;
+        -moz-border-radius: 0 0 5px 5px;
+        -ms-border-radius: 0 0 5px 5px;
+        -o-border-radius: 0 0 5px 5px;
+        overflow-y: auto;
+        max-height: 35vh;
+        &::-webkit-scrollbar {
+            background-color: $green;
+            border-radius: 0 0 5px 0;
+            -webkit-border-radius: 0 0 5px 0;
+            -moz-border-radius: 0 0 5px 0;
+            -ms-border-radius: 0 0 5px 0;
+            -o-border-radius: 0 0 5px 0;
+        }
+    }
+    &__displayed__results {
+        display: none;
+        flex-direction: column;
     }
 }
 
@@ -86,12 +150,50 @@ body {
     &__form {
         &__down {
             @include filterdiv(ustensiles);
+            justify-content: space-between;
+        }
+        &__up {
+            @include filterdiv(ustensiles);
+            justify-content: space-between;
         }
     }
     &__button {
         &__down {
             @include button(ustensiles);
         }
+        &__up {
+            @include button(ustensiles);
+            border-radius: 0 5px 0 0 ;
+            -webkit-border-radius: 0 5px 0 0 ;
+            -moz-border-radius: 0 5px 0 0 ;
+            -ms-border-radius: 0 5px 0 0 ;
+            -o-border-radius: 0 5px 0 0 ;
+        }
+    }
+    &__content {
+        background-color: $red;
+        color: white;
+        padding: 1rem;
+        border-radius: 0 0 5px 5px;
+        margin: 0;
+        -webkit-border-radius: 0 0 5px 5px;
+        -moz-border-radius: 0 0 5px 5px;
+        -ms-border-radius: 0 0 5px 5px;
+        -o-border-radius: 0 0 5px 5px;
+        overflow-y: auto;
+        max-height: 35vh;
+        &::-webkit-scrollbar {
+            background-color: $red;
+            border-radius: 0 0 5px 0;
+            -webkit-border-radius: 0 0 5px 0;
+            -moz-border-radius: 0 0 5px 0;
+            -ms-border-radius: 0 0 5px 0;
+            -o-border-radius: 0 0 5px 0;
+        }
+    }
+    &__displayed__results {
+        display: none;
+        flex-direction: column;
     }
 }
 
@@ -145,14 +247,39 @@ body {
 		.ingredients {
 			grid-column: 1;
 			grid-row: 1;
+            &__content {
+                position: absolute;
+                width: 29rem;
+                max-height: 48vh;
+                @include getGrid(repeat(2, 1fr), 1fr, 0.5rem 5rem);
+            }
+            &__displayed__results {
+                width: 29rem;
+            }
 		}
 		.devices {
 			grid-column: 2;
 			grid-row: 1;
+            &__content {
+                position: absolute;
+                width: 29rem;
+                @include getGrid(repeat(2, 1fr), 1fr, 0.5rem 5rem);
+            }
+            &__displayed__results {
+                width: 29rem;
+            }
 		}
 		.ustensiles {
 			grid-column: 3;
 			grid-row: 1;
+            &__content {
+                position: absolute;
+                width: 29rem;
+                @include getGrid(repeat(2, 1fr), 1fr, 0.5rem 5rem);
+            }
+            &__displayed__results {
+                width: 29rem;
+            }
 		}
 
         &__form {

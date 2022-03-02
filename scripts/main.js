@@ -6,7 +6,7 @@ import { searchAlgo } from './utils/searchAlgo.js'
 // Get datas and launch init
 function getDatas (recipesList) {
   recipesList = searchData()
-  init(recipesList);
+  init(recipesList); // test if need to add ingredientsLi, applianceLi, ustensilsLi
 }
 
 function searchData () {
@@ -18,13 +18,13 @@ function searchData () {
   return recipesList;
 }
 
-function init (recipesList) {
+function init (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
   displayRecipes(recipesList);
   searchAlgo(recipesList);
   generateFilterList(recipesList);
   // InitDisplayList
   searchingFiltersLists(recipesList, generateFilterList);
-  removeTag(recipesList);
+  removeTag(recipesList, ingredientsLi, applianceLi, ustensilsLi);
 }
 
 // launch app

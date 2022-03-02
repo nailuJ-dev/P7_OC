@@ -1,5 +1,5 @@
 import { lowerCaseNormalize, displayRecipes } from './FunctionalFunction.js';
-import { generateFilterList } from './filters.js'
+import { generateFilterList, searchingFiltersLists } from './filters.js'
 import { recipes } from '../data/recipes.js';
 
 export { searchAlgo }
@@ -13,29 +13,29 @@ function searchAlgo (recipesList) {
     let filteredRecipes = recipesList.filter((recipe) => {
       const recipeIngredients = recipe.ingredients.map(el => el.ingredient).toString();
       return (
-        lowerCaseNormalize(recipe.name).includes(searchInput) ||
-        lowerCaseNormalize(recipeIngredients).includes(searchInput) ||
-        lowerCaseNormalize(recipe.description).includes(searchInput)
+        lowerCaseNormalize(recipe.name).includes(mainInput) ||
+        lowerCaseNormalize(recipeIngredients).includes(mainInput) ||
+        lowerCaseNormalize(recipe.description).includes(mainInput)
       );
     });
 
-    if (searchInput.length >= 2) {
+    if (mainInput.length >= 3) {
       if (filteredRecipes.length > 0) {
         recipesList = filteredRecipes;
         displayRecipes(recipesList);
         generateFilterList(recipesList);
-        // search on filters
+        searchingFiltersLists(recipesList, generateFilterList);
       } else {
         recipesPart.innerHTML =
           '<div class="no__matching">Aucune recette ne correspond à votre critère… <br />Vous pouvez chercher « tarte aux pommes », « poisson », etc.</div>';
         generateFilterList(recipesList)
-        // search on filters
+        searchingFiltersLists(recipesList, generateFilterList);
       }
-    } else if (searchInput.length < 2) {
+    } else if (mainInput.length <= 3) {
       recipesList = recipes;
       displayRecipes(recipesList);
       generateFilterList(recipesList)
-      // search on filters
+      searchingFiltersLists(recipesList, generateFilterList);
     }
   });
 }

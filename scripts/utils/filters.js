@@ -189,7 +189,7 @@ function creatingTag (item, ingredientsLi, applianceLi, ustensilsLi) {
         tag.classList.add('ingredients__item');
     } else if (applianceLi.includes(item)) {
         tag.classList.add('devices__item');
-    } else if (ustensilsLi.includes(item)) {
+    } else {
         tag.classList.add('ustensiles__item');
     }; */
     console.log(tag)
@@ -214,7 +214,13 @@ function addTag (ingredientsLi, applianceLi, ustensilsLi) {
     tagsSelectedArray.forEach((tag) => {
         const input = creatingTag(tag, ingredientsLi, applianceLi, ustensilsLi);
         console.log(tag)
-        
+        /* if (ingredientsLi.includes(tag.textContent)) {
+            tag.classList.add('ingredients__item');
+        } else if (applianceLi.includes(tag.textContent)) {
+            tag.classList.add('devices__item');
+        } else {
+            tag.classList.add('ustensiles__item');
+        }; */
         searchTag.appendChild(input);
     });
 }

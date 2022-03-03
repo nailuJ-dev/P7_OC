@@ -1,7 +1,6 @@
 import { displayRecipes, lowerCaseNormalize } from './FunctionalFunction.js';
 
-export { generateFilterList, searchingFiltersLists, removeTag,  }
-
+export { generateFilterList, searchingFiltersLists, removeTag, displayFiltersInit }
 
 // Generate items for filters' lists
 
@@ -91,26 +90,58 @@ function searchingFiltersLists (recipesList, generateFilterList) {
 // Display & close filters
 
 function displayFilters (obj, objlist, item, filterTarget) {
+    const filterInput = document.querySelectorAll('.filter__input');
     if (filterTarget.includes(item) && obj.isFilterOpen == false) {
         for (let ob of objlist) {
-            ob.content.style.display = 'none';
+            ob.content.style.display = 'flex';
+            ob.input.style.display = 'none';
             ob.input.style.width = 'null';
             ob.isFilterOpen = false;
+            ob.text.value = '';
         }
-        ob.content.style.display = 'flex';
-        ob.input.style.width = '29rem';
-        ob.isFilterOpen = true;
+        obj.content.style.display = 'none';
+        obj.input.style.display = 'flex';
+        obj.isFilterOpen = true;
+        obj.text.focus();
+
     } else if (filterTarget.includes(item) && obj.isFilterOpen == true) {
-        ob.content.style.display = 'none';
-        ob.input.style.width = 'null';
-        ob.isFilterOpen = false;
+        obj.content.style.display = 'flex';
+        obj.input.style.display = 'none';
+        obj.isFilterOpen = false;
+        obj.text.value = '';
     };
 }
 
 // Close & display with click
 
-function displayFiltersInit {
-    
+function displayFiltersInit () {
+    const buttonFilter = document.querySelectorAll('.search__area__form__down, .search__area__form__up');
+    let ingredientObject = {};
+    let applianceObject = {};
+    let ustensilesObject = {};
+    ingredientObject.isFilterOpen = false;
+    applianceObject.isFilterOpen = false;
+    ustensilesObject.isFilterOpen = false;
+
+    buttonFilter.forEach(btn => {
+        btn.addEventListener('click', (el) => {
+            const filterTarget = el.target.className;
+
+            ingredientObject.content = document.querySelector('.ingredients__form__down');
+            ingredientObject.input = document.querySelector('.ingredients__displayed__results');
+            ingredientObject.text = document.querySelector('.ingredients__input')
+            applianceObject.content = document.querySelector('.devices__form__down');
+            applianceObject.input = document.querySelector('.devices__displayed__results');
+            applianceObject.text = document.querySelector('.devices__input')
+            ustensilesObject.content = document.querySelector('.ustensiles__form__down');
+            ustensilesObject.input = document.querySelector('.ustensiles__displayed__results');
+            ustensilesObject.text = document.querySelector('.ustensiles__input')
+
+            displayFilters(ingredientObject, [ingredientObject, applianceObject, ustensilesObject], 'ingredients', filterTarget); // 'item' name needs to be check
+            displayFilters(applianceObject, [ingredientObject, applianceObject, ustensilesObject], 'devices', filterTarget); // 'item' name needs to be check
+            displayFilters(ustensilesObject, [ingredientObject, applianceObject, ustensilesObject], 'ustensiles', filterTarget); // 'item' name needs to be check
+        });
+    });
 }
 
 // Create, Add and remove tags, and display recipes with tags
@@ -144,22 +175,24 @@ function displayrecipesWithTagSelected (recipesList) {
 // Model to create tag
 
 function creatingTag (item, ingredientsLi, applianceLi, ustensilsLi) {
-    const tag = document.createElement('div');
+    let tag = document.createElement('div');
     tag.className = 'tag__item';
     const name = document.createElement('span');
     name.className = 'tag__item__text';
     name.innerHTML = item;
     const closeButton = document.createElement('i');
-    closeButton.classList.add('fas fa-times-circle tag__close__button');
+    closeButton.classList.add('fas', 'fa-times-circle', 'tag__close__button');
     closeButton.setAttribute('data-item', item);
-    if (ingredientsLi.includes(item.textContent)) {
-        name.classList.add('ingredients__item');
-    } else if (applianceLi.includes(item.textContent)) {
-        name.classList.add('devices__item');
-    } else if (ustensilsLi.includes(item.textContent)) {
-        name.classList.add('ustensiles__item');
-    };
-
+    console.log(ingredientsLi)
+    console.log(item)
+    /* if (ingredientsLi.includes(item)) {
+        tag.classList.add('ingredients__item');
+    } else if (applianceLi.includes(item)) {
+        tag.classList.add('devices__item');
+    } else if (ustensilsLi.includes(item)) {
+        tag.classList.add('ustensiles__item');
+    }; */
+    console.log(tag)
     tag.appendChild(name);
     tag.appendChild(closeButton);
     return tag;
@@ -177,9 +210,11 @@ function resTags () {
 
 function addTag (ingredientsLi, applianceLi, ustensilsLi) {
     resTags();
-    const searchTag = document.querySelector('.search__tag');
+    const searchTag = document.querySelector('.search__filter');
     tagsSelectedArray.forEach((tag) => {
         const input = creatingTag(tag, ingredientsLi, applianceLi, ustensilsLi);
+        console.log(tag)
+        
         searchTag.appendChild(input);
     });
 }
@@ -204,9 +239,10 @@ function displayTag (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
 
 function removeTag (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
   document.addEventListener('click', (el) => {
-    if (el.target.className === 'tag__close__button') {
+    if (el.target.className.includes('tag__close__button')) {
       const value = el.target.getAttribute('data-item');
-      tagsSelectedArray = tagsSelectedArray.filter(item => item !== value);
+      const index = tagsSelectedArray.indexOf(value);
+      tagsSelectedArray = [...tagsSelectedArray.slice(0, index), ...tagsSelectedArray.slice(index + 1)];
       addTag(ingredientsLi, applianceLi, ustensilsLi);
       displayrecipesWithTagSelected(recipesList); //replace recipeList by TagsSelectedArray
     }

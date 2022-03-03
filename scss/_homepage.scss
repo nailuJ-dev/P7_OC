@@ -6,6 +6,11 @@ body {
 	margin: 2rem 1rem;
 }
 
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
 .body {
 	@include getGrid(100%, 1fr, 0.5rem);
 }
@@ -42,6 +47,12 @@ body {
             @include form();
         }
     }
+    &__filter {
+        display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+        margin-top: 0.5rem;
+    }
 }
 
 .ingredients {
@@ -49,10 +60,16 @@ body {
         &__down {
             @include filterdiv(ingredients);
             justify-content: space-between;
+            column-gap: 0.5rem;
         }
         &__up {
             @include filterdiv(ingredients);
             justify-content: space-between;
+            border-radius: 5px 5px 0px 0px;
+            -webkit-border-radius: 5px 5px 0px 0px;
+            -moz-border-radius: 5px 5px 0px 0px;
+            -ms-border-radius: 5px 5px 0px 0px;
+            -o-border-radius: 5px 5px 0px 0px;
         }
     }
     &__button {
@@ -93,6 +110,31 @@ body {
         display: none;
         flex-direction: column;
     }
+    &__item {
+        background-color: $blue;
+        color: white;
+        padding: 6px 6px 6px 10px;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+    }
+    &__input {
+        border-radius: 5px 0 0 5px;
+        -webkit-border-radius: 5px 0 0 5px;
+        -moz-border-radius: 5px 0 0 5px;
+        -ms-border-radius: 5px 0 0 5px;
+        -o-border-radius: 5px 0 0 5px;
+        border: none;
+        color: white;
+        margin: 0;
+        width: 100%;
+        background-color: $blue;
+        &::placeholder {
+            color: white;
+        }
+    }
 }
 
 .devices {
@@ -104,7 +146,12 @@ body {
         &__up {
             @include filterdiv(devices);
             justify-content: space-between;
-        }
+            border-radius: 5px 5px 0px 0px;
+            -webkit-border-radius: 5px 5px 0px 0px;
+            -moz-border-radius: 5px 5px 0px 0px;
+            -ms-border-radius: 5px 5px 0px 0px;
+            -o-border-radius: 5px 5px 0px 0px;
+}
     }
     &__button {
         &__down {
@@ -144,6 +191,31 @@ body {
         display: none;
         flex-direction: column;
     }
+    &__item {
+        background-color: $green;
+        color: white;
+        padding: 6px 6px 6px 10px;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+    }
+    &__input {
+        border-radius: 5px 0 0 5px;
+        -webkit-border-radius: 5px 0 0 5px;
+        -moz-border-radius: 5px 0 0 5px;
+        -ms-border-radius: 5px 0 0 5px;
+        -o-border-radius: 5px 0 0 5px;
+        border: none;
+        color: white;
+        margin: 0;
+        width: 100%;
+        background-color: $green;
+        &::placeholder {
+            color: white;
+        }
+    }
 }
 
 .ustensiles {
@@ -155,6 +227,11 @@ body {
         &__up {
             @include filterdiv(ustensiles);
             justify-content: space-between;
+            border-radius: 5px 5px 0px 0px;
+            -webkit-border-radius: 5px 5px 0px 0px;
+            -moz-border-radius: 5px 5px 0px 0px;
+            -ms-border-radius: 5px 5px 0px 0px;
+            -o-border-radius: 5px 5px 0px 0px;
         }
     }
     &__button {
@@ -194,6 +271,32 @@ body {
     &__displayed__results {
         display: none;
         flex-direction: column;
+    }
+    &__item {
+        background-color: $red;
+        color: white;
+        padding: 6px 6px 6px 10px;
+        column-gap: 0.5rem;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+    }
+    &__input {
+        border-radius: 5px 0 0 5px;
+        -webkit-border-radius: 5px 0 0 5px;
+        -moz-border-radius: 5px 0 0 5px;
+        -ms-border-radius: 5px 0 0 5px;
+        -o-border-radius: 5px 0 0 5px;
+        border: none;
+        color: white;
+        margin: 0;
+        width: 100%;
+        background-color: $red;
+        &::placeholder {
+            color: white;
+        }
     }
 }
 
@@ -243,48 +346,41 @@ body {
     .search__area {
 		display: flex;
         column-gap: 2rem;
+        &__form {
+            width: 10rem;
+        }
 
 		.ingredients {
 			grid-column: 1;
 			grid-row: 1;
             &__content {
-                position: absolute;
-                width: 29rem;
                 max-height: 48vh;
                 @include getGrid(repeat(2, 1fr), 1fr, 0.5rem 5rem);
             }
             &__displayed__results {
-                width: 29rem;
+                position: absolute;
             }
 		}
 		.devices {
 			grid-column: 2;
 			grid-row: 1;
             &__content {
-                position: absolute;
-                width: 29rem;
                 @include getGrid(repeat(2, 1fr), 1fr, 0.5rem 5rem);
             }
             &__displayed__results {
-                width: 29rem;
+                position: absolute;
             }
 		}
 		.ustensiles {
 			grid-column: 3;
 			grid-row: 1;
             &__content {
-                position: absolute;
-                width: 29rem;
                 @include getGrid(repeat(2, 1fr), 1fr, 0.5rem 5rem);
             }
             &__displayed__results {
-                width: 29rem;
+                position: absolute;
             }
 		}
-
-        &__form {
-            width: 10rem;
-        }
     }
 
 	/* Main part (cards recipes section) */

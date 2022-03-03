@@ -79,8 +79,7 @@
     align-items: center;
     color: white;
     margin: 0;
-    padding: 0 0 0 1rem;
-    width: 100%;
+    padding: 16px;
     border-radius: 5px 5px 5px 5px;
     -webkit-border-radius: 5px 5px 5px 5px;
     -moz-border-radius: 5px 5px 5px 5px;
@@ -103,7 +102,6 @@
 @mixin form() {
     display: flex;
     height: 70px;
-    width: 100%;
 }
 
 @mixin getGrid($columns, $rows, $gap) {

@@ -1,89 +1,88 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./scss/style.css">
-    <link rel="shortcut icon" href="./assets/mini_logo.png">
-    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.4/css/all.css'>
-    <title>Les petits plats</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./scss/style.css">
+        <link rel="shortcut icon" href="./assets/mini_logo.png">
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.4/css/all.css'>
+        <title>Les petits plats</title>
+    </head>
 
-<body class="body">
-    <header>
-        <div class="header">
-            <img class="header__logo" src="./assets/logo.png" alt="Logo Les petits plats">
-        </div>
-        <div class="search__bar">
-            <input type="search" class="search__bar__input" aria-label="Search through site content"
-                placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
-            <button class="search__bar__submit" type="submit">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-    </header>
-    <main class="search">
-        <aside class="search__filter">
-        </aside>
-        <!-- reprendre modele précédent avec hide / display div name et div input -->
-        <nav class="search__area">
-            <form class="search__area__form ingredients__form">
-                <div class="search__area__form__down ingredients__form__down">
-                    <div class="ingredients__title filter__title">Ingrédients</div>
-                    <button class="search__area__form__submit  ingredients__button__down" type="button">
-                        <i class="fas fa-chevron-down ingredients__chevron__down"></i>
-                    </button>
-                </div>
-                <div class="ingredients__displayed__results">
-                    <div class="search__area__form__up ingredients__form__up">
-                        <input type="search" class="ingredients__input filter__input" placeholder="Rechercher un ingrédient">
-                        <button class="search__area__form__submit ingredients__button__down" type="button">
+    <body class="body">
+        <header>
+            <div class="header">
+                <img class="header__logo" src="./assets/logo.png" alt="Logo Les petits plats">
+            </div>
+            <div class="search__bar">
+                <input type="search" class="search__bar__input" aria-label="Search through site content"
+                    placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
+                <button class="search__bar__submit" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </header>
+        <main class="search">
+            <aside class="search__filter">
+            </aside>
+            <!-- reprendre modele précédent avec hide / display div name et div input -->
+            <nav class="search__area">
+                <form class="search__area__form ingredients__form">
+                    <div class="search__area__form__down ingredients__form__down">
+                        <div class="ingredients__title filter__title">Ingrédients</div>
+                        <button class="search__area__form__submit  ingredients__button__down" type="button">
                             <i class="fas fa-chevron-down ingredients__chevron__down"></i>
-                        </button> 
-                    </div>
-                    <ul class="list__content ingredients__content"></ul>
-                </div>
-            </form>
-            <form class="search__area__form devices__form">
-                <div class="search__area__form__down devices__form__down">
-                    <div class="devices__title filter__title">Appareils</div>
-                    <button class="search__area__form__submit  devices__button__down" type="button">
-                        <i class="fas fa-chevron-down devices__chevron__down"></i>
-                    </button>
-                </div>
-                <div class="devices__displayed__results">
-                    <div class="search__area__form__up devices__form__up">
-                        <input type="search" class="devices__input filter__input" placeholder="Rechercher un appareil">
-                        <button class="search__area__form__submit  devices__button__up" type="button">
-                            <i class="fas fa-chevron-up devices__chevron__up"></i>
                         </button>
                     </div>
-                    <ul class="list__content devices__content"></ul>
-                </div>
-            </form>
-            <form class="search__area__form ustensiles__form">
-                <div class="search__area__form__down ustensiles__form__down">
-                    <div class="ustensils__title filter__title">Ustensiles</div>
-                    <button class="search__area__form__submit  ustensiles__button__down" type="button">
-                        <i class="fas fa-chevron-down ustensiles__chevron__down"></i>
-                    </button>
-                </div>
-                <div class="ustensiles__displayed__results">
-                    <div class="search__area__form__up ustensiles__form__up">
-                        <input type="search" class="ustensiles__input filter__input" placeholder="Rechercher un ustensile">
-                        <button class="search__area__form__submit  ustensiles__button__up" type="button">
-                            <i class="fas fa-chevron-up ustensiles__chevron__up"></i>
+                    <div class="ingredients__displayed__results">
+                        <div class="search__area__form__up ingredients__form__up">
+                            <input type="search" class="ingredients__input filter__input" placeholder="Rechercher un ingrédient">
+                            <button class="search__area__form__submit ingredients__button__down" type="button">
+                                <i class="fas fa-chevron-down ingredients__chevron__down"></i>
+                            </button> 
+                        </div>
+                        <ul class="list__content ingredients__content"></ul>
+                    </div>
+                </form>
+                <form class="search__area__form devices__form">
+                    <div class="search__area__form__down devices__form__down">
+                        <div class="devices__title filter__title">Appareils</div>
+                        <button class="search__area__form__submit  devices__button__down" type="button">
+                            <i class="fas fa-chevron-down devices__chevron__down"></i>
                         </button>
                     </div>
-                    <ul class="list__content ustensiles__content"></ul>
-                </div>
-            </form>
-        </nav>
-        <section class="main__part">
-        </section>
-    </main>
-    <script type="module" src="./scripts/main.js"></script>
-</body>
-
+                    <div class="devices__displayed__results">
+                        <div class="search__area__form__up devices__form__up">
+                            <input type="search" class="devices__input filter__input" placeholder="Rechercher un appareil">
+                            <button class="search__area__form__submit  devices__button__up" type="button">
+                                <i class="fas fa-chevron-up devices__chevron__up"></i>
+                            </button>
+                        </div>
+                        <ul class="list__content devices__content"></ul>
+                    </div>
+                </form>
+                <form class="search__area__form ustensiles__form">
+                    <div class="search__area__form__down ustensiles__form__down">
+                        <div class="ustensils__title filter__title">Ustensiles</div>
+                        <button class="search__area__form__submit  ustensiles__button__down" type="button">
+                            <i class="fas fa-chevron-down ustensiles__chevron__down"></i>
+                        </button>
+                    </div>
+                    <div class="ustensiles__displayed__results">
+                        <div class="search__area__form__up ustensiles__form__up">
+                            <input type="search" class="ustensiles__input filter__input" placeholder="Rechercher un ustensile">
+                            <button class="search__area__form__submit  ustensiles__button__up" type="button">
+                                <i class="fas fa-chevron-up ustensiles__chevron__up"></i>
+                            </button>
+                        </div>
+                        <ul class="list__content ustensiles__content"></ul>
+                    </div>
+                </form>
+            </nav>
+            <section class="main__part">
+            </section>
+        </main>
+        <script type="module" src="./scripts/main.js"></script>
+    </body>
 </html>

@@ -1,0 +1,14 @@
+.tag {
+    &__item {
+        align-items: center;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        column-gap: 0.5rem;
+        justify-content: center;
+        margin: 0.5rem 0rem 0.5rem 0rem;
+        padding: 0.5rem;
+        background-color: black;
+    }
+}

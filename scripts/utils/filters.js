@@ -1,4 +1,5 @@
 import { displayRecipes, lowerCaseNormalize } from './FunctionalFunction.js';
+import { updatedRecipes, searchAlgo } from './searchAlgo.js';
 
 export { generateFilterList, searchingFiltersLists, removeTag, displayFiltersInit }
 
@@ -90,7 +91,7 @@ function searchingFiltersLists (recipesList, generateFilterList) {
 // Display & close filters
 
 function displayFilters (obj, objlist, item, filterTarget) {
-    const filterInput = document.querySelectorAll('.filter__input');
+    // const filterInput = document.querySelectorAll('.filter__input');
     if (filterTarget.includes(item) && obj.isFilterOpen == false) {
         for (let ob of objlist) {
             ob.content.style.display = 'flex';
@@ -153,7 +154,7 @@ let tagsSelectedArray = [];
 function displayrecipesWithTagSelected (recipesList) {
     const recipesPart = document.querySelector('.main__part');
     const tags = Array.from(document.querySelectorAll('.tag__item'));
-    const tagsFiltered = recipesList.filter((recipe) => {
+    const tagsFiltered = tags.length ? recipesList.filter((recipe) => {
         return tags.every(item => {
             const formatedItem = lowerCaseNormalize(item.textContent);
             return (recipe.ingredients.some(i => {
@@ -164,11 +165,17 @@ function displayrecipesWithTagSelected (recipesList) {
                 return lowerCaseNormalize(ustensil) === formatedItem;
             }));
         });
-    });
+    })
+    : [];
+
     if (tagsFiltered.length) {
         recipesPart.innerHTML = '';
         displayRecipes(tagsFiltered);
         generateFilterList(tagsFiltered);
+    } else {
+        recipesPart.innerHTML = '';
+        displayRecipes(recipesList);
+        generateFilterList(recipesList);
     }
 }
 

@@ -1,19 +1,19 @@
 import { BuildMainRecipeCards } from './constructor.js';
-
-export { lowerCaseNormalize, displayRecipes }
+import { searchAlgo } from './searchAlgo.js';
 
 // Lower and normalize text content
 
-function lowerCaseNormalize (items) {
+export function lowerCaseNormalize (items) {
   return items
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '');
 }
 
-function displayRecipes (recipesList) {
+export function displayRecipes (recipesList) {
   const recipesPart = document.querySelector('.main__part')
   recipesPart.innerHTML = '';
+  searchAlgo(recipesList)
   recipesList.forEach(recipe => {
     recipesPart.appendChild(new BuildMainRecipeCards(recipe).buildingRecipePart());
   });

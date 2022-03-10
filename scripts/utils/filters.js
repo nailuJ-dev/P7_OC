@@ -170,6 +170,7 @@ function displayrecipesWithTagSelected (recipesList) {
         recipesPart.innerHTML = '';
         displayRecipes(tagsFiltered);
         generateFilterList(tagsFiltered);
+        // searchAlgo(tagsFiltered)
     } else {
         recipesPart.innerHTML = '';
         displayRecipes(recipesList);

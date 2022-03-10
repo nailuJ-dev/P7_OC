@@ -2,6 +2,8 @@ import { lowerCaseNormalize, displayRecipes } from './FunctionalFunction.js';
 import { generateFilterList, searchingFiltersLists } from './filters.js'
 import { recipes } from '../data/recipes.js';
 
+export let lastSearch = [];
+
 export function updatedRecipes (item, recipesList) {
     const recipesPart = document.querySelector('.main__part');
 
@@ -37,7 +39,9 @@ export function searchAlgo (recipesList) {
 
   searchInput.addEventListener('keyup', (el) => {
     const mainInput = lowerCaseNormalize(el.target.value);
+    lastSearch = mainInput;
     updatedRecipes(mainInput, recipesList);
+    // return lastSearch;
     /* let filteredRecipes = recipesList.filter((recipe) => {
       const recipeIngredients = recipe.ingredients.map(el => el.ingredient).toString();
       return (

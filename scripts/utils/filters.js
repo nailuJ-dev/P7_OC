@@ -1,5 +1,5 @@
 import { displayRecipes, lowerCaseNormalize } from './FunctionalFunction.js';
-import { updatedRecipes, searchAlgo } from './searchAlgo.js';
+import { updatedRecipes, searchAlgo, lastSearch } from './searchAlgo.js';
 
 export { generateFilterList, searchingFiltersLists, removeTag, displayFiltersInit }
 
@@ -258,6 +258,7 @@ function removeTag (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
       tagsSelectedArray = [...tagsSelectedArray.slice(0, index), ...tagsSelectedArray.slice(index + 1)];
       addTag(ingredientsLi, applianceLi, ustensilsLi);
       displayrecipesWithTagSelected(recipesList); //replace recipeList by TagsSelectedArray
+      // updatedRecipes(lastSearch, recipesList);
     }
   });
 }

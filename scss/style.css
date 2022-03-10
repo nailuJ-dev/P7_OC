@@ -850,7 +850,7 @@ input[type=search]::-webkit-search-results-decoration {
 /* Large devices */
 @media screen and (min-width: 992px) {
   body {
-    margin: 1rem 5rem;
+    margin: auto;
     max-width: 1200px;
   }
 

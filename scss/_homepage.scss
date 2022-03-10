@@ -330,7 +330,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 /* Large devices */
 @media screen and (min-width: $largeDevices) {
 	body {
-		margin: 1rem 5rem;
+		margin: auto;
 		max-width: 1200px;
 	}
 

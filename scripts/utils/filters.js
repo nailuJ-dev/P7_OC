@@ -1,11 +1,9 @@
 import { displayRecipes, lowerCaseNormalize } from './FunctionalFunction.js';
 import { updatedRecipes, searchAlgo, lastSearch } from './searchAlgo.js';
 
-export { generateFilterList, searchingFiltersLists, removeTag, displayFiltersInit }
-
 // Generate items for filters' lists
 
-function generateFilterList (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
+export function generateFilterList (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
   let ingredients = []
   let appliances = []
   let ustensiles = []
@@ -56,7 +54,7 @@ function creatingFilterLi (recipesList, ingredientsLi, applianceLi, ustensilsLi)
 
 // Searching on filters' lists
 
-function searchingFiltersLists (recipesList, generateFilterList) {
+export function searchingFiltersLists (recipesList, generateFilterList) {
     const filterItems = generateFilterList(recipesList);
     const filterInput = document.querySelectorAll('.filter__input');
 
@@ -115,7 +113,7 @@ function displayFilters (obj, objlist, item, filterTarget) {
 
 // Close & display with click
 
-function displayFiltersInit () {
+export function displayFiltersInit () {
     const buttonFilter = document.querySelectorAll('.search__area__form__down, .search__area__form__up');
     let ingredientObject = {};
     let applianceObject = {};
@@ -234,7 +232,7 @@ function addTag (ingredientsLi, applianceLi, ustensilsLi) {
 
 // Display tag
 
-function displayTag (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
+export function displayTag (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
     let itemList = document.querySelectorAll('.list__item');
     itemList.forEach((item) => {
       item.addEventListener('click', (el) => {

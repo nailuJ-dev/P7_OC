@@ -249,7 +249,7 @@ export function displayTag (recipesList, ingredientsLi, applianceLi, ustensilsLi
 
 // Remove tag
 
-function removeTag (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
+export function removeTag (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
   document.addEventListener('click', (el) => {
     if (el.target.className.includes('tag__close__button')) {
       const value = el.target.getAttribute('data-item');
@@ -257,7 +257,7 @@ function removeTag (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
       tagsSelectedArray = [...tagsSelectedArray.slice(0, index), ...tagsSelectedArray.slice(index + 1)];
       addTag(ingredientsLi, applianceLi, ustensilsLi);
       displayrecipesWithTagSelected(recipesList); //replace recipeList by TagsSelectedArray
-      // updatedRecipes(lastSearch, recipesList);
+      updatedRecipes(lastSearch, recipesList);
     }
   });
 }

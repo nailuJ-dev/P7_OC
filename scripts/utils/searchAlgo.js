@@ -7,14 +7,14 @@ export let lastSearch = [];
 export function updatedRecipes (item, recipesList) {
     const recipesPart = document.querySelector('.main__part');
 
-    let filteredRecipes = recipesList.filter((recipe) => {
+    let filteredRecipes = recipesList.filter(recipe => {
         const recipeIngredients = recipe.ingredients.map(el => el.ingredient).toString();
         return (
-          lowerCaseNormalize(recipe.name).includes(item) ||
-          lowerCaseNormalize(recipeIngredients).includes(item) ||
-          lowerCaseNormalize(recipe.description).includes(item)
+            lowerCaseNormalize(recipe.name).includes(item) ||
+            lowerCaseNormalize(recipeIngredients).includes(item) ||
+            lowerCaseNormalize(recipe.description).includes(item)
         );
-      });
+    });
   
     if (item.length >= 3) {
         if (filteredRecipes.length > 0) {
@@ -40,7 +40,7 @@ export function searchAlgo (recipesList) {
   searchInput.addEventListener('keyup', (el) => {
     const mainInput = lowerCaseNormalize(el.target.value);
     lastSearch = mainInput;
-    updatedRecipes(mainInput, recipesList);
+    updatedRecipes(lastSearch, recipesList);
     // return lastSearch;
     /* let filteredRecipes = recipesList.filter((recipe) => {
       const recipeIngredients = recipe.ingredients.map(el => el.ingredient).toString();

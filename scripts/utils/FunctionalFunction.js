@@ -13,7 +13,6 @@ export function lowerCaseNormalize (items) {
 export function displayRecipes (recipesList) {
   const recipesPart = document.querySelector('.main__part')
   recipesPart.innerHTML = '';
-  searchAlgo(recipesList)
   recipesList.forEach(recipe => {
     recipesPart.appendChild(new BuildMainRecipeCards(recipe).buildingRecipePart());
   });

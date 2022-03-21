@@ -1,6 +1,6 @@
 // Build the cards for the main part which displaying results
 
-export default class BuildMainRecipeCards {
+export class BuildMainRecipeCards {
   constructor (recipe) {
     this.id = recipe.id;
     this.name = recipe.name;

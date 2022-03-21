@@ -10,11 +10,7 @@ function getDatas (recipesList) {
 }
 
 function searchData () {
-  const searchInput = document.querySelector('.search__bar__input')
   let recipesList = recipes;
-  if (searchInput.value >= 2) {
-    recipesList = searchAlgo(recipesList);
-  }
   return recipesList;
 }
 

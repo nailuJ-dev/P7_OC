@@ -4,9 +4,7 @@ import { recipes } from '../data/recipes.js';
 
 export let lastSearch = [];
 
-// insert removeTag in searchAlgo
-
-export function updatedRecipes (item, recipesList) {
+function updatedRecipes (item, recipesList) {
     let filteredRecipes = recipesList.filter((recipe) => {
         const recipeIngredients = recipe.ingredients.map((el) => el.ingredient).toString();
         return (
@@ -28,9 +26,9 @@ export function updatedRecipes (item, recipesList) {
           searchingFiltersLists(recipesList, generateFilterList);
         }
     } else if (item.length < 3) {
-        displayRecipes(recipes);
-        generateFilterList(recipes)
-        searchingFiltersLists(recipes, generateFilterList);
+        displayRecipes(recipesList);
+        generateFilterList(recipesList)
+        searchingFiltersLists(recipesList, generateFilterList);
     }
     return filteredRecipes;
 }
@@ -54,49 +52,35 @@ export function searchAlgo (recipesList) {
     })
     : [];
     console.log(tagsFiltered)
-    if (tagsFiltered.length) {
+    if (tagsFiltered.length > 0) {
         recipesPart.innerHTML = '';
         displayRecipes(tagsFiltered);
         generateFilterList(tagsFiltered);
-        removeTag(tagsFiltered);
         searchInput.addEventListener('keyup', (el) => {
-            if (el.target.value.length < 3) {
-                searchingFiltersLists(tagsFiltered);
-                displayRecipes(tagsFiltered);
-                removeTag(tagsFiltered)
-            }
+            console.log(tagsFiltered)
+            const mainInput = lowerCaseNormalize(el.target.value);
+            const filteredRecipes = updatedRecipes(mainInput, tagsFiltered);
         
-            if (el.target.value.length > 3) {
-                const mainInput = lowerCaseNormalize(el.target.value);
-                const filteredRecipes = updatedRecipes(mainInput, tagsFiltered);
+            searchingFiltersLists(filteredRecipes);
         
-                searchingFiltersLists(filteredRecipes);
-        
-                displayRecipes(filteredRecipes);
-                removeTag(filteredRecipes)
-            }
+            displayRecipes(filteredRecipes);
+            removeTag(filteredRecipes)
         });
+        removeTag(tagsFiltered);
     } else {
         recipesPart.innerHTML = '';
         displayRecipes(recipesList);
         generateFilterList(recipesList);
-        removeTag(recipesList);
         searchInput.addEventListener('keyup', (el) => {
-            if (!el.target.value.length < 3) {
-                searchingFiltersLists(recipesList);
-                displayRecipes(recipesList);
-                removeTag(recipesList)
-            }
-        
-            if (el.target.value.length > 3) {
-                const mainInput = lowerCaseNormalize(el.target.value);
-                const filteredRecipes = updatedRecipes(mainInput, recipesList);
+            const mainInput = lowerCaseNormalize(el.target.value);
+            const filteredRecipes = updatedRecipes(mainInput, recipesList);
                 
-                searchingFiltersLists(filteredRecipes);
+            searchingFiltersLists(filteredRecipes);
         
-                displayRecipes(filteredRecipes);
-                removeTag(filteredRecipes)
-            }
+            displayRecipes(filteredRecipes);
+            removeTag(filteredRecipes)
         });
+        removeTag(recipesList);
     }
+    removeTag(recipesList)
 }

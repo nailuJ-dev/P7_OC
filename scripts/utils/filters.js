@@ -1,5 +1,4 @@
 import { displayRecipes, lowerCaseNormalize } from './FunctionalFunction.js';
-import { updatedRecipes, searchAlgo, lastSearch } from './searchAlgo.js';
 
 // Generate items for filters' lists
 
@@ -230,7 +229,7 @@ export function displayTag (recipesList, ingredientsLi, applianceLi, ustensilsLi
             tagsSelectedArray.push(selectedItem);
         }
         addTag(ingredientsLi, applianceLi, ustensilsLi);
-        displayrecipesWithTagSelected(recipesList); //replace recipeList by TagsSelectedArray
+        displayrecipesWithTagSelected(recipesList);
       });
     });
   }
@@ -243,9 +242,8 @@ export function removeTag (recipesList, ingredientsLi, applianceLi, ustensilsLi)
       const value = el.target.getAttribute('data-item');
       const index = tagsSelectedArray.indexOf(value);
       tagsSelectedArray = [...tagsSelectedArray.slice(0, index), ...tagsSelectedArray.slice(index + 1)];
-      console.log(tagsSelectedArray)
       addTag(ingredientsLi, applianceLi, ustensilsLi);
-      displayrecipesWithTagSelected(recipesList); //replace recipeList by TagsSelectedArray
+      displayrecipesWithTagSelected(recipesList);
     }
   });
 }

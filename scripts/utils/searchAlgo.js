@@ -27,7 +27,7 @@ export function updatedRecipes (item, recipesList) {
           generateFilterList(recipesList)
           searchingFiltersLists(recipesList, generateFilterList);
         }
-    } else if (item.length <= 3) {
+    } else if (item.length < 3) {
         displayRecipes(recipes);
         generateFilterList(recipes)
         searchingFiltersLists(recipes, generateFilterList);
@@ -63,6 +63,7 @@ export function searchAlgo (recipesList) {
             if (el.target.value.length < 3) {
                 searchingFiltersLists(tagsFiltered);
                 displayRecipes(tagsFiltered);
+                removeTag(tagsFiltered)
             }
         
             if (el.target.value.length > 3) {
@@ -72,6 +73,7 @@ export function searchAlgo (recipesList) {
                 searchingFiltersLists(filteredRecipes);
         
                 displayRecipes(filteredRecipes);
+                removeTag(filteredRecipes)
             }
         });
     } else {
@@ -83,6 +85,7 @@ export function searchAlgo (recipesList) {
             if (!el.target.value.length < 3) {
                 searchingFiltersLists(recipesList);
                 displayRecipes(recipesList);
+                removeTag(recipesList)
             }
         
             if (el.target.value.length > 3) {
@@ -92,6 +95,7 @@ export function searchAlgo (recipesList) {
                 searchingFiltersLists(filteredRecipes);
         
                 displayRecipes(filteredRecipes);
+                removeTag(filteredRecipes)
             }
         });
     }

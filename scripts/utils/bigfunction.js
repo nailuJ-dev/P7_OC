@@ -2,8 +2,10 @@ import { lowerCaseNormalize, displayRecipes } from './FunctionalFunction.js';
 import { generateFilterList, removeTag, searchingFiltersLists } from './filters.js'
 import { recipes } from '../data/recipes.js';
 
+let filteredRecipes = recipes;
+
 function updatedRecipes (item, recipesList) {
-    let filteredRecipes = recipesList.filter((recipe) => {
+    filteredRecipes = recipesList.filter((recipe) => {
         const recipeIngredients = recipe.ingredients.map((el) => el.ingredient).toString();
         return (
             lowerCaseNormalize(recipe.name).includes(item) ||
@@ -31,12 +33,12 @@ function updatedRecipes (item, recipesList) {
     return filteredRecipes;
 }
 
-export function searchAlgo (recipesList) {
+export function searchAlgo () {
     const searchInput = document.querySelector('.search__bar__input');
     const searchTags = document.querySelector('.search__filter');
     const recipesPart = document.querySelector('.main__part');
 
-    const tagsFiltered = searchTags.length ? recipesList.filter((recipe) => {
+    const tagsFiltered = searchTags.length ? filteredRecipes.filter((recipe) => {
         return searchTags.every(item => {
             const formatedItem = lowerCaseNormalize(item.textContent);
             return (recipe.ingredients.some(i => {
@@ -57,7 +59,7 @@ export function searchAlgo (recipesList) {
         searchInput.addEventListener('keyup', (el) => {
             console.log(tagsFiltered)
             const mainInput = lowerCaseNormalize(el.target.value);
-            let filteredRecipes = updatedRecipes(mainInput, tagsFiltered);
+            filteredRecipes = updatedRecipes(mainInput, tagsFiltered);
         
             searchingFiltersLists(filteredRecipes);
         
@@ -67,18 +69,18 @@ export function searchAlgo (recipesList) {
         removeTag(tagsFiltered);
     } else {
         recipesPart.innerHTML = '';
-        displayRecipes(recipesList);
-        generateFilterList(recipesList);
+        displayRecipes(filteredRecipes);
+        generateFilterList(filteredRecipes);
         searchInput.addEventListener('keyup', (el) => {
             const mainInput = lowerCaseNormalize(el.target.value);
-            let filteredRecipes = updatedRecipes(mainInput, recipesList);
+            filteredRecipes = updatedRecipes(mainInput, filteredRecipes);
                 
             searchingFiltersLists(filteredRecipes);
         
             displayRecipes(filteredRecipes);
             removeTag(filteredRecipes)
         });
-        removeTag(recipesList);
+        removeTag(filteredRecipes);
     }
-    removeTag(recipesList)
+    removeTag(filteredRecipes)
 }

@@ -148,11 +148,10 @@ let tagsSelectedArray = [];
 
 // Display recipes with tags
 
-function displayrecipesWithTagSelected (recipesList) {
-    const recipesPart = document.querySelector('.main__part');
-    const tags = Array.from(document.querySelectorAll('.tag__item'));
-    const tagsFiltered = tags.length ? recipesList.filter((recipe) => {
-        return tags.every(item => {
+export function displayrecipesWithTagSelected (recipes) {
+    const searchTags = Array.from(document.querySelectorAll('.tag__item'));
+    let tagsFiltered = searchTags.length ? recipes.filter((recipe) => {
+        return searchTags.every(item => {
             const formatedItem = lowerCaseNormalize(item.textContent);
             return (recipe.ingredients.some(i => {
                 return lowerCaseNormalize(i.ingredient).includes(formatedItem);
@@ -165,14 +164,14 @@ function displayrecipesWithTagSelected (recipesList) {
     })
     : [];
 
+    console.log(tagsFiltered)
+
     if (tagsFiltered.length) {
-        recipesPart.innerHTML = '';
         displayRecipes(tagsFiltered);
         generateFilterList(tagsFiltered);
     } else {
-        recipesPart.innerHTML = '';
-        displayRecipes(recipesList);
-        generateFilterList(recipesList);
+        displayRecipes(recipes);
+        generateFilterList(recipes);
     }
 }
 

@@ -1,9 +1,13 @@
 import { lowerCaseNormalize, displayRecipes } from './FunctionalFunction.js';
-import { generateFilterList, removeTag, searchingFiltersLists } from './filters.js'
+import { generateFilterList, removeTag, searchingFiltersLists, displayrecipesWithTagSelected } from './filters.js'
 import { recipes } from '../data/recipes.js';
 
-function updatedRecipes (item, recipesList) {
-    let filteredRecipes = recipesList.filter((recipe) => {
+let filteredRecipes = recipes;
+
+function updatedRecipes (item, recipes) {
+    const recipesPart = document.querySelector('.main__part');
+
+    filteredRecipes = recipes.filter((recipe) => {
         const recipeIngredients = recipe.ingredients.map((el) => el.ingredient).toString();
         return (
             lowerCaseNormalize(recipe.name).includes(item) ||
@@ -11,6 +15,10 @@ function updatedRecipes (item, recipesList) {
             lowerCaseNormalize(recipe.description).includes(item)
         );
     });
+
+    displayRecipes(recipes);
+    generateFilterList(recipes)
+    searchingFiltersLists(recipes, generateFilterList);
   
     if (item.length >= 3) {
         if (filteredRecipes.length > 0) {
@@ -20,65 +28,23 @@ function updatedRecipes (item, recipesList) {
         } else {
           recipesPart.innerHTML =
             '<div class="no__matching">Aucune recette ne correspond à votre critère… <br />Vous pouvez chercher « tarte aux pommes », « poisson », etc.</div>';
-          generateFilterList(recipesList)
-          searchingFiltersLists(recipesList, generateFilterList);
+          generateFilterList(recipes)
+          searchingFiltersLists(recipes, generateFilterList);
         }
-    } else if (item.length < 3) {
-        displayRecipes(recipesList);
-        generateFilterList(recipesList)
-        searchingFiltersLists(recipesList, generateFilterList);
     }
+
     return filteredRecipes;
 }
 
-export function searchAlgo (recipesList) {
+export function searchAlgo (recipes) {
     const searchInput = document.querySelector('.search__bar__input');
-    const searchTags = document.querySelector('.search__filter');
-    const recipesPart = document.querySelector('.main__part');
 
-    const tagsFiltered = searchTags.length ? recipesList.filter((recipe) => {
-        return searchTags.every(item => {
-            const formatedItem = lowerCaseNormalize(item.textContent);
-            return (recipe.ingredients.some(i => {
-                return lowerCaseNormalize(i.ingredient).includes(formatedItem);
-            }) ||
-            lowerCaseNormalize(recipe.appliance).includes(formatedItem) ||
-            recipe.ustensils.some(ustensil => {
-                return lowerCaseNormalize(ustensil) === formatedItem;
-            }));
-        });
-    })
-    : [];
-    console.log(tagsFiltered)
-    if (tagsFiltered.length > 0) {
-        recipesPart.innerHTML = '';
-        displayRecipes(tagsFiltered);
-        generateFilterList(tagsFiltered);
-        searchInput.addEventListener('keyup', (el) => {
-            console.log(tagsFiltered)
-            const mainInput = lowerCaseNormalize(el.target.value);
-            let filteredRecipes = updatedRecipes(mainInput, tagsFiltered);
-        
-            searchingFiltersLists(filteredRecipes);
-        
-            displayRecipes(filteredRecipes);
-            removeTag(filteredRecipes)
-        });
-        removeTag(tagsFiltered);
-    } else {
-        recipesPart.innerHTML = '';
-        displayRecipes(recipesList);
-        generateFilterList(recipesList);
-        searchInput.addEventListener('keyup', (el) => {
-            const mainInput = lowerCaseNormalize(el.target.value);
-            let filteredRecipes = updatedRecipes(mainInput, recipesList);
-                
-            searchingFiltersLists(filteredRecipes);
-        
-            displayRecipes(filteredRecipes);
-            removeTag(filteredRecipes)
-        });
-        removeTag(recipesList);
-    }
-    removeTag(recipesList)
-}
+    searchInput.addEventListener('keyup', (el) => {
+        const mainInput = lowerCaseNormalize(el.target.value);
+        filteredRecipes = updatedRecipes(mainInput, recipes);
+
+        displayrecipesWithTagSelected(filteredRecipes)
+        removeTag(filteredRecipes);
+    });
+    removeTag(filteredRecipes)
+};

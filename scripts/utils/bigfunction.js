@@ -5,6 +5,7 @@ import { recipes } from '../data/recipes.js';
 let filteredRecipes = recipes;
 
 function updatedRecipes (item, recipesList) {
+    const recipesPart = document.querySelector('.main__part');
     filteredRecipes = recipesList.filter((recipe) => {
         const recipeIngredients = recipe.ingredients.map((el) => el.ingredient).toString();
         return (
@@ -38,7 +39,7 @@ export function searchAlgo () {
     const searchTags = document.querySelector('.search__filter');
     const recipesPart = document.querySelector('.main__part');
 
-    const tagsFiltered = searchTags.length ? filteredRecipes.filter((recipe) => {
+    let tagsFiltered = searchTags.length ? filteredRecipes.filter((recipe) => {
         return searchTags.every(item => {
             const formatedItem = lowerCaseNormalize(item.textContent);
             return (recipe.ingredients.some(i => {

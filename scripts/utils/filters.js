@@ -164,8 +164,6 @@ export function displayrecipesWithTagSelected (recipes) {
     })
     : [];
 
-    console.log(tagsFiltered)
-
     if (tagsFiltered.length) {
         displayRecipes(tagsFiltered);
         generateFilterList(tagsFiltered);
@@ -177,7 +175,7 @@ export function displayrecipesWithTagSelected (recipes) {
 
 // Model to create tag
 
-function creatingTag (item, ingredientsLi, applianceLi, ustensilsLi) {
+function creatingTag (item, ingredientsLi, applianceLi) {
     let tagged = document.createElement('div');
     tagged.className = 'tag__item';
     const name = document.createElement('span');
@@ -186,14 +184,17 @@ function creatingTag (item, ingredientsLi, applianceLi, ustensilsLi) {
     const closeButton = document.createElement('i');
     closeButton.classList.add('fas', 'fa-times-circle', 'tag__close__button');
     closeButton.setAttribute('data-item', item);
-    /*if (ingredientsLi.includes(item)) {
-        tagged.classList.add('ingredients__item');
-    } else if (applianceLi.includes(item)) {
+    // console.log(name.textContent)
+    // console.log(ingredientsLi)
+    /* if (ingredientsLi.includes(name.textContent)) {
+        tagged.setAttribute('data-item', 'ingredients__item');
+    }  else if (applianceLi.includes(name.textContent)) {
         tagged.classList.add('devices__item');
-    } else if (ustensilsLi.includes(item)) {
+    } else {
         tagged.classList.add('ustensiles__item');
-    };*/
+    } */
     tagged.appendChild(name);
+    // console.log(tagged)
     tagged.appendChild(closeButton);
     return tagged;
 }
@@ -208,18 +209,19 @@ function resTags () {
 
 // Create tag from model
 
-function addTag (ingredientsLi, applianceLi, ustensilsLi) {
+function addTag (ingredientsLi, applianceLi) {
     resTags();
     const searchTag = document.querySelector('.search__filter');
     tagsSelectedArray.forEach((tag) => {
-        const input = creatingTag(tag, ingredientsLi, applianceLi, ustensilsLi);
+        const input = creatingTag(tag, ingredientsLi, applianceLi);
+        console.log(searchTag)
         searchTag.appendChild(input);
     });
 }
 
 // Display tag
 
-export function displayTag (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
+export function displayTag (recipesList, ingredientsLi, applianceLi) {
     let itemList = document.querySelectorAll('.list__item');
     itemList.forEach((item) => {
       item.addEventListener('click', (el) => {
@@ -227,7 +229,7 @@ export function displayTag (recipesList, ingredientsLi, applianceLi, ustensilsLi
         if (!tagsSelectedArray.includes(selectedItem)) {
             tagsSelectedArray.push(selectedItem);
         }
-        addTag(ingredientsLi, applianceLi, ustensilsLi);
+        addTag(ingredientsLi, applianceLi);
         displayrecipesWithTagSelected(recipesList);
       });
     });
@@ -235,13 +237,13 @@ export function displayTag (recipesList, ingredientsLi, applianceLi, ustensilsLi
 
 // Remove tag
 
-export function removeTag (recipesList, ingredientsLi, applianceLi, ustensilsLi) {
+export function removeTag (recipesList, ingredientsLi, applianceLi) {
   document.addEventListener('click', (el) => {
     if (el.target.className.includes('tag__close__button')) {
       const value = el.target.getAttribute('data-item');
       const index = tagsSelectedArray.indexOf(value);
       tagsSelectedArray = [...tagsSelectedArray.slice(0, index), ...tagsSelectedArray.slice(index + 1)];
-      addTag(ingredientsLi, applianceLi, ustensilsLi);
+      addTag(ingredientsLi, applianceLi);
       displayrecipesWithTagSelected(recipesList);
     }
   });

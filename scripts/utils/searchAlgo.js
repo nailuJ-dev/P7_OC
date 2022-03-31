@@ -3,6 +3,9 @@ import { generateFilterList, removeTag, searchingFiltersLists, displayrecipesWit
 import { recipes } from '../data/recipes.js';
 
 let filteredRecipes = recipes;
+let ingredientsLi = [];
+let ustensilsLi = [];
+let applianceLi = [];
 
 function updatedRecipes (item, recipes) {
     const recipesPart = document.querySelector('.main__part');

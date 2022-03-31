@@ -1,5 +1,4 @@
 import { BuildMainRecipeCards } from './constructor.js';
-import { searchAlgo } from './searchAlgo.js';
 
 // Lower and normalize text content
 

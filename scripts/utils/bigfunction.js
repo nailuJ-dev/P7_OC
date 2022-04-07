@@ -3,6 +3,7 @@ import { generateFilterList, removeTag, searchingFiltersLists } from './filters.
 import { recipes } from '../data/recipes.js';
 
 let filteredRecipes = recipes;
+let tagsSelectedArray = [];
 
 function updatedRecipes (item, recipes) {
     filteredRecipes = recipes.filter((recipe) => {

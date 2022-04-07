@@ -164,15 +164,16 @@ export function displayrecipesWithTagSelected (recipes) {
         });
     })
     : [];
+    return tagsFiltered;
 
-    if (tagsFiltered.length) {
+    /* if (tagsFiltered.length) {
         displayRecipes(tagsFiltered);
         generateFilterList(tagsFiltered);
         searchAlgo(tagsFiltered);
     } else {
         displayRecipes(recipes);
         generateFilterList(recipes);
-    }
+    } */
 }
 
 // Model to create tag

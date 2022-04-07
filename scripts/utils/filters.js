@@ -1,4 +1,5 @@
 import { displayRecipes, lowerCaseNormalize } from './FunctionalFunction.js';
+import { searchAlgo } from './searchAlgo.js';
 
 // Generate items for filters' lists
 
@@ -167,6 +168,7 @@ export function displayrecipesWithTagSelected (recipes) {
     if (tagsFiltered.length) {
         displayRecipes(tagsFiltered);
         generateFilterList(tagsFiltered);
+        searchAlgo(tagsFiltered);
     } else {
         displayRecipes(recipes);
         generateFilterList(recipes);
@@ -241,8 +243,9 @@ export function removeTag (recipesList, ingredientsLi, applianceLi) {
   document.addEventListener('click', (el) => {
     if (el.target.className.includes('tag__close__button')) {
       const value = el.target.getAttribute('data-item');
-      const index = tagsSelectedArray.indexOf(value);
-      tagsSelectedArray = [...tagsSelectedArray.slice(0, index), ...tagsSelectedArray.slice(index + 1)];
+      tagsSelectedArray = tagsSelectedArray.filter((item) => {
+        return item !== value
+      });
       addTag(ingredientsLi, applianceLi);
       displayrecipesWithTagSelected(recipesList);
     }

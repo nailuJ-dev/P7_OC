@@ -1,6 +1,7 @@
-@import './variables';
-@import './normalize';
-@import './mixins';
-@import './homepage';
-@import './recipe-card';
-@import './filter';
+@import "./base/base";
+@import "./utils/variables";
+@import "./utils/mixin";
+@import "./components/dynamiqueClass";
+@import "./components/fontawesome";
+@import"./components/animation.scss";
+@import "./pages/index";

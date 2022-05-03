@@ -1,0 +1,10 @@
+@mixin flex($mainAxis, $secondAxis){
+    display: flex;
+    justify-content: $mainAxis;
+    align-items: $secondAxis;
+}
+
+@mixin size-container($width, $height) {
+    width: $width;
+    height: $height;
+}

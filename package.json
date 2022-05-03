@@ -1,0 +1,13 @@
+{
+  "name": "les-petits-plats",
+  "version": "1.0.0",
+  "description": "Réalisation d'un site qui génére des recette en fonctions des besoins utilisateurs. Le but du projet est de comprendre et créer des algorythmes de rechcerches",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch sass/style.scss:main.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+  

@@ -1,4 +1,4 @@
-import { createList } from './firstAlgorithm.js';
+import { createList } from './secondAlgorithm.js';
 import { ELEMENTHTML } from './constant.js';
 
 // Fonction qui permet de générer des éléments HTML

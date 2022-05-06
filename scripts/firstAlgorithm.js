@@ -28,7 +28,8 @@ export const searchByMainInput = (e) => {
   }
 
   // Si l'entrée est trouvée dans le titre ou description, pousse la recette associée dans recipeFilter
-  recipeFilter = copyRecipes.filter((recipe) => recipe.name.toLowerCase().match(inputUser) || recipe.description.toLowerCase().match(inputUser));
+  const recipeIngredients = copyRecipes.ingredients.map((el) => el.ingredient).toLowerCase();
+  recipeFilter = copyRecipes.filter((recipe) => recipe.name.toLowerCase().match(inputUser) || recipeIngredients.match(inputUser) || recipe.description.toLowerCase().match(inputUser));
   // Pousse les id de chaque recette de recipeFilter pour retirer les doublons
   idRecipe = recipeFilter.map((recipeId) => recipeId.id);
 

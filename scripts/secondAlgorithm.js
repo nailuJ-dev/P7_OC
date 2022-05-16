@@ -26,11 +26,12 @@ export const searchByMainInput = (e) => {
   }
 
   // Bouclage pour rechercher dans le titre, la description et vérifier la correspondance, si oui on pousse dans recipeFilter
-  const recipeIngredients = copyRecipes.ingredients.map((el) => el.ingredient).toLowerCase();
+  console.log(copyRecipes.ingredients)
+  const recipeIngredients = copyRecipes.ingredients.map((el) => el.ingredient.toLowerCase())
   for (let i = 0; i < copyRecipes.length; i++) {
-    const recipe = copyRecipes[i];
+    const recipe = copyRecipes[i]
     if (recipe.name.toLowerCase().match(inputUser) || recipeIngredients.match(inputUser) || recipe.description.toLowerCase().match(inputUser)) {
-      recipeFilter.push(recipe);
+      recipeFilter.push(recipe)
     }
   }
 

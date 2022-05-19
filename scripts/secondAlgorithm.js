@@ -10,6 +10,7 @@ let allIngredients = [];
 let allAppliances = [];
 let allUstensils = [];
 let historySearch = [];
+let tagArray = []
 
 // Fonction qui permet de verifier si l'entrée utilisateur est trouvée dans le titre, description ou ingrédient
 export const searchByMainInput = (e) => {
@@ -18,19 +19,30 @@ export const searchByMainInput = (e) => {
   recipeFilter = [];
 
   // Si la taille de l'entrée est inférieure à 3
-  if (inputUser.length < 3) {
+  if (inputUser.length < 3 && inputUser.length > 0) {
     // Vide le tableau (pour éviter les doublons )
     idRecipe = [];
     // Retourne le message suivant
-    return (ELEMENTHTML.containerRecipe.innerHTML = `<p class='no-result'>Aucune recette ne correspond à votre critère ... vous pouvez chercher tarte au pomme ou poisson par exemple</p>`);
+    return (ELEMENTHTML.containerRecipe.innerHTML = "<p class='no-result'>Aucune recette ne correspond à votre critère ... vous pouvez chercher tarte au pomme ou poisson par exemple</p>")
+  }
+
+  if (!inputUser.length) {
+    createElement(copyRecipes)
+    setIngredients(copyRecipes)
+    createList(copyRecipes)
   }
 
   // Bouclage pour rechercher dans le titre, la description et vérifier la correspondance, si oui on pousse dans recipeFilter
-  console.log(copyRecipes.ingredients)
-  const recipeIngredients = copyRecipes.ingredients.map((el) => el.ingredient.toLowerCase())
+  /*console.log(copyRecipes.ingredients)
+  const recipeIngredients = copyRecipes.filter((recipe) => {
+    const copyIngredients = recipe.ingredients.map((el) => el.ingredient.toLowerCase())
+    return copyIngredients
+  })*/
   for (let i = 0; i < copyRecipes.length; i++) {
     const recipe = copyRecipes[i]
-    if (recipe.name.toLowerCase().match(inputUser) || recipeIngredients.match(inputUser) || recipe.description.toLowerCase().match(inputUser)) {
+    const recipeIngredients = recipe.ingredients.map((el) => el.ingredient.toLowerCase())
+    console.log(recipeIngredients)
+    if (recipe.name.toLowerCase().match(inputUser) || recipeIngredients.includes(inputUser) || recipe.description.toLowerCase().match(inputUser)) {
       recipeFilter.push(recipe)
     }
   }
@@ -227,6 +239,11 @@ const stepRecipeFiltered = (tag, array) => {
   createList(array);
   // Fonction qui permet de supprimer un tag
   [...document.querySelectorAll('.fa-times-circle')].forEach((cross, key) => cross.addEventListener('click', () => removeTag(key, historySearch)));
+  if (!historySearch.length) {
+    createElement(recipeFilter);
+    setIngredients(recipeFilter);
+    createList(recipeFilter);
+  }
 };
 
 // S'il n'y a pas de tag et de valeur dans la barre principale, alors au click on crée une liste

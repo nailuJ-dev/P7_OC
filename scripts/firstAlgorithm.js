@@ -11,6 +11,7 @@ let allIngredients = []
 let allAppliances = []
 let allUstensils = []
 let historySearch = []
+let tagArray = []
 
 // Fonction qui permet de vérifier si l'entrée utilisateur est trouvée dans le titre, description ou ingrédient
 export const searchByMainInput = (e) => {
@@ -24,7 +25,13 @@ export const searchByMainInput = (e) => {
     // Vide le tableau (pour éviter les doublons )
     idRecipe = []
     // Retourne le message suivant
-    return (ELEMENTHTML.containerRecipe.innerHTML = `<p class='no-result'>Aucune recette ne correspond à votre critère ... vous pouvez chercher tarte au pomme ou poisson par exemple</p>`)
+    return (ELEMENTHTML.containerRecipe.innerHTML = "<p class='no-result'>Aucune recette ne correspond à votre critère ... vous pouvez chercher tarte au pomme ou poisson par exemple</p>")
+  }
+
+  if (!inputUser.length && !tagArray.length) {
+    createElement(copyRecipes)
+    setIngredients(copyRecipes)
+    createList(copyRecipes)
   }
 
   // Si l'entrée est trouvée dans le titre ou description, pousse la recette associée dans recipeFilter
@@ -49,7 +56,7 @@ export const searchByMainInput = (e) => {
   }
   // Si la taille de recipeFilter est vide, alors on affiche le message suivant
   if (recipeFilter.length === 0) {
-    return (ELEMENTHTML.containerRecipe.innerHTML = `<p class='no-result'>Aucune recette ne correspond à votre critère ... vous pouvez chercher tarte au pomme ou poisson par exemple</p>`)
+    return (ELEMENTHTML.containerRecipe.innerHTML = "<p class='no-result'>Aucune recette ne correspond à votre critère ... vous pouvez chercher tarte au pomme ou poisson par exemple</p>")
   }
   // Fonction qui va créer autant d éléments que possède recipeFilter
   createElement(recipeFilter)
@@ -109,7 +116,7 @@ const filteredList = (e) => {
 
 // Permet d'ajouter un tag
 const choiceInList = (array) => {
-  // pour chaque element , siclick on appelle la fonction addTag
+  // pour chaque element , si click on appelle la fonction addTag
   [...document.querySelectorAll('li')].forEach((el) => el.addEventListener('click', () => addTag(el, array)))
 }
 
@@ -118,7 +125,7 @@ const addTag = (element, array) => {
   // Permet d'associer la couleur en fonction du type de liste
   let classTag = setTypeTag(element)
   // Ajoute un tag avec son contenu
-  ELEMENTHTML.allTags.innerHTML += `<p class='tag ${classTag}'>${element.innerHTML}<span class='far fa-times-circle'></span></p>`;
+  ELEMENTHTML.allTags.innerHTML += `<p class='tag ${classTag}'>${element.innerHTML}<span class='far fa-times-circle'></span></p>`
   // Fonction qui permet de continuer la recherche
   stepRecipeFiltered(element.innerHTML, array)
 };
@@ -158,7 +165,7 @@ const stepRecipeFiltered = (tag, array) => {
   setIngredients(array)
   createList(array);
   // Fonction qui permet de supprimer un tag
-  [...document.querySelectorAll('.fa-times-circle')].forEach((cross, key) => cross.addEventListener('click', () => removeTag(key, historySearch)));
+  [...document.querySelectorAll('.fa-times-circle')].forEach((cross, key) => cross.addEventListener('click', () => removeTag(key, historySearch)))
 }
 
 // S'il n'y a pas de tag et de valeur dans la barre principale, alors au click on créer une liste

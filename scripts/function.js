@@ -83,16 +83,17 @@ export const setTypeTag = (elementLi, css) => {
 // Fonction qui permet de supprimer un tag
 export const removeTag = (key, array) => {
   // On demande de faire une supression de tag tant que chaque tag est superieur a l'index de l'icone sur la quelle il y a eu le click
-  do {
-    [...document.querySelectorAll('.tag')][key].remove()
-  } while ([...document.querySelectorAll('.tag')].length > key)
+  [...document.querySelectorAll('.tag')][key].remove()
+  console.log(document.querySelectorAll('.tag'))
+  console.log(array)
 
   // Et on appelle l'array (historySearch non disponible sur ce module) pour afficher un des resultats des recherches précédentes
   createElement(array[key])
   setIngredients(array[key])
   createList(array[key])
   // Suppresion des tags de l'array
-  array.splice(key)
+  array = array.filter(item => item !== key)
+  // array.splice(key)
 }
 
 // Fonction qui permet de donner du style à une liste et supprimer ceux des autres listes

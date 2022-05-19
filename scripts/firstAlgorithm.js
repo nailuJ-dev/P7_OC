@@ -22,6 +22,8 @@ export const searchByMainInput = (e) => {
   if (inputUser.length < 3) {
     // Vide le tableau (pour actualiser la recherche)
     recipeFilter = []
+    const tagArray = document.querySelector('.tags')
+    tagArray.innerHTML = ''
     // Vide le tableau (pour éviter les doublons )
     idRecipe = []
     // Retourne le message suivant

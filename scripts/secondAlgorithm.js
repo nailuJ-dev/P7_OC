@@ -10,13 +10,14 @@ let allIngredients = [];
 let allAppliances = [];
 let allUstensils = [];
 let historySearch = [];
-let tagArray = []
 
 // Fonction qui permet de verifier si l'entrée utilisateur est trouvée dans le titre, description ou ingrédient
 export const searchByMainInput = (e) => {
   const inputUser = e.target.value.toLowerCase();
   // Vide le tableau (pour actualiser la recherche)
   recipeFilter = [];
+  const tagArray = document.querySelector('.tags')
+  tagArray.innerHTML = ''
 
   // Si la taille de l'entrée est inférieure à 3
   if (inputUser.length < 3 && inputUser.length > 0) {

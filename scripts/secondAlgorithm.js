@@ -239,7 +239,7 @@ const stepRecipeFiltered = (tag, array) => {
   setIngredients(array);
   createList(array);
   // Fonction qui permet de supprimer un tag
-  [...document.querySelectorAll('.fa-times-circle')].forEach((cross, key) => cross.addEventListener('click', () => removeTag(key, historySearch)));
+  [...document.querySelectorAll('.fa-times-circle')].forEach((cross, key) => cross.addEventListener('click', () => removeTag(key, historySearch)))
   if (!historySearch.length) {
     createElement(recipeFilter);
     setIngredients(recipeFilter);

@@ -1,216 +1,177 @@
-.header_index {
-    @include flex(center, center);
-    @include size-container(100%, auto);
-    margin-bottom: 30px;
-    img {
-      width: 60%;
-      transform: translateX(60px);
-    }
-}
+body {
+    max-width: 1440px;
+    margin: auto;
   
-.main_index {
-    @include size-container(100%, auto);
-}
+    header {
+      margin: 1rem;
+      .images {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
   
-.search-zone {
-  @include size-container(100%, auto);
-  position: relative;
-  .item {
-    @include size-container(100%, 60px);
-    background-color: $bg-field;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    border: none;
-    padding-left: 10px;
-    font-size: 20px;
-    &::placeholder{
-      padding-left: 20px
-    }
-  }
-  button {
-    position: absolute;
-    top: 2px;
-    right: 15px;
-    border: none;
-    background-color: $bg-field;
-    padding: 15px 5px;
-  }
-}
-  
-.box {
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-}
-  
-.style-input {
-  position: relative;
-}
-  
-.select {
-  @include size-container(160px, 60px);
-  font-size: 18px;
-  font-weight: bold;
-  color: $input-txt;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  margin-right: 15px;
-  position: relative;
-  cursor: pointer;
-  z-index: 1;
-  &::placeholder {
-    color: $input-txt;
-    padding-left: 20px;
-  }
-  &--ingredient {
-    background-color: $input_ingredient;
-  }
-  &--appareil {
-    background-color: $input-appliance;
-  }
-  &--ustensile {
-    background-color: $input-ustensils;
-  }
-}
-  
-.all_recipes {
-  @include size-container(100%, auto);
-  @include flex(space-between, center);
-  flex-wrap: wrap;
-}
-  
-.card_recipe {
-  @include size-container(30%, 350px);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 49% 15% 30% 6%;
-  background-color: $bg-article;
-  border-radius: 7px;
-  margin: 20px 0;
-  .picture_recipe {
-    background-color: $bg-nopicture;
-    grid-area: 1/1/2/3;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
-  }
-  .head_card {
-    grid-area: 2/1/3/3;
-    @include flex(space-between, center);
-    padding: 0 20px;
-    font-size: 20px;
-    font-weight: 700;
-    h2{
-      font-size: 18px;
-      font-weight: normal;
-    }
-  }
-  .description_recipe {
-    grid-area: 3/1/4/3;
-    @include size-container(100%, auto);
-    @include flex(space-between, flex-start);
-    overflow: hidden;
-    .list_ingredients {
-      width: 50%;
-      line-height: 15px;
-      > p {
-        font-size: 14px;
-        margin: 0;
-        padding-left:15px;
-        .weight{
-          font-weight: 600;
+        .logo {
+          width: 16rem;
+        }
+    
+        .name {
+          width: 270px;
+          height: 50px;
+          margin-bottom: 12px;
+        }
+      }
+    
+      .search__bar {
+        display: flex;
+        margin: auto;
+        max-width: 1240px;
+        height: 69px;
+        position: relative;
+    
+        #site-search {
+          font: 400 18px $first-typography;
+          padding-left: 22px;
+          width: 100%;
+          border-radius: $radius;
+          border: none;
+          background: $primary-color;
+    
+          &:active,
+          &:focus {
+            outline: none;
+          }
+    
+          &::placeholder {
+            opacity: 0.5;
+          }
+        }
+    
+        button {
+          background: none;
+          border: none;
+          position: absolute;
+          right: 16px;
+          top: 18px;
         }
       }
     }
-    .make_recipe {
-      width: 50%;
-      .instructions {
-        margin: 0;
-        padding: 0 15px;
-        font-size: 13px;
-        line-height: 15px;
-        text-align: justify;
+    
+    #recipes {
+      display: flex;
+      justify-content: left;
+      margin: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 50px;
+      margin-bottom: 50px;
+      width: 1240px;
+  
+      .missing {
+        font: 400 25px $first-typography;
+        margin: 25px auto;
+        text-align: center;
+      }
+    
+      .recipeCard {
+        width: 380px;
+        height: 364px;
+        cursor: pointer;
+  
+        h2,
+        p {
+          margin: 0;
+          padding: 0;
+        }
+  
+        .image {
+          width: 100%;
+          height: 50%;
+          border-top-left-radius: $radius;
+          border-top-right-radius: $radius;
+   
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-top-left-radius: $radius;
+            border-top-right-radius: $radius;
+          }
+        }
+    
+        .textContent {
+          background: $primary-color;
+          width: 100%;
+          height: 50%;
+          border-bottom-left-radius: $radius;
+          border-bottom-right-radius: $radius;
+    
+          .textContentUp {
+            display: flex;
+            justify-content: space-between;
+            font-family: $first-typography;
+            padding: 20px;
+    
+            .name {
+              font-size: 18px;
+              font-weight: 400;
+              max-width: 230px;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+    
+            .time {
+              font-size: 18px;
+              font-weight: 700;
+              display: flex;
+              align-items: center;
+  
+              .clock {
+                height: 20px;
+                width: 20px;
+                margin-right: 7px;
+              }
+            }
+          }
+    
+          .textContentDown {
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 20px 20px 20px;
+            height: 100px;
+            overflow: hidden;
+    
+            .ingredients {
+              font-family: $first-typography;
+              display: flex;
+              flex-direction: column;
+              margin: 0;
+              padding: 0;
+              list-style-type: none;
+              font-size: 12px;
+              max-width: 171px;
+              height: 87px;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 6;
+              overflow: hidden;
+              margin-right: 10px;
+    
+              span {
+                font-weight: 700;
+              }
+            }
+    
+            .description {
+              font-family: $second-typography;
+              font-size: 12px;
+              width: 171px;
+              height: 86px;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 6;
+              overflow: hidden;
+            }
+          }
+        }
       }
     }
-  }
-}
-  
-.tag {
-  display: inline-block;
-  color: white;
-  position: relative; 
-  font-size: 20px;
-  border-radius: 5px;
-  padding: 12px 15px;
-  margin-right: 15px;
-}
-
-.box-ingredient, .box-appliance, .box-ustencil{
-  width: 750px;
-  position: relative;
-}
- 
-.list-food{
-  background-color: $input_ingredient;
-  width: 99%;
-  display: none;
-  flex-wrap: wrap;
-  position: absolute;
-  z-index: 10;
-}
-  
-.list-ingredient{
-  color: $input-txt;
-  cursor: pointer;
-  font-size: 18px;
-  width: 25%;
-  padding: 10px 20px;
-  &:hover{
-    background-color: lighten($color: $input_ingredient, $amount: 2%);
-  }
-}
-  
-.list-item{
-  width: 99%;
-  background-color: $input_appliance;
-  display: none;
-  flex-wrap: wrap;
-  position: absolute;
-  z-index: 10;
-}
-  
-.list-appliance{
-  color: $input-txt;
-  cursor: pointer;
-  width: 25%;
-  padding: 10px 20px;
-  &:hover{
-    background-color: lighten($color: $input-appliance, $amount: 2%);
-  }
-}
-  
-.list-ustenciles{
-  background-color: $input-ustensils;
-  width: 99%;
-  display: none;
-  flex-wrap: wrap;
-  position: absolute;
-  z-index: 10;
-}
-  
-.list-ustencil{
-  color: $input-txt;
-  width: 25%;
-  cursor: pointer;
-  padding: 10px 20px;
-  &:hover{
-    background-color: lighten($color: $input-ustensils, $amount: 2%);
-  }
-}
-
-.size-input{
-  width: 742px;
-  padding: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
 }

@@ -1,7 +1,4 @@
-@import "./base/base";
-@import "./utils/variables";
-@import "./utils/mixin";
-@import "./components/dynamiqueClass";
-@import "./components/fontawesome";
-@import"./components/animation.scss";
-@import "./pages/index";
+@import "./utils/_variables.scss";
+@import "./components/_button.scss";
+@import "./base/_typo.scss";
+@import "./pages/_index.scss";

@@ -1,58 +1,59 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="scss/style.css" />
-    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.4/css/all.css'>
-    <title>Les pettis plats</title>
-  </head>
-  <body>
-    <header class="header_index">
-      <h1 class="title_index"><img src="assets/logo_entreprise.png" alt="logo de l'entreprise" /></h1>
-    </header>
-    <main class="main_index">
-      <div class="search-zone">
-        <label for="item"></label>
-        <input type="text" id="item" class="item" name="item" placeholder="Rechercher un ingrédient , appareil, ustensiles ou une recette" value="" />
-        <button type="submit"><span class="fas fa-search"></span></button>
-        <div class="tags"></div>
-        <div class="box">
-          <label for="ingredient"></label>
-          
-          <span class="style-input"
-          ><input type="text" id="ingredient" class="select select--ingredient" name="ingredient" placeholder="Ingredient" /><span
-          class="fas fa-angle-up logo-ingredient"
-          ></span
-          ></span>
-          <div class="list-food"></div>
-        </div>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Les petits plats</title>
+		<meta name="description" content="Trouvez la recette idéale pour votre repas !" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/png" href="./assets/mini_logo.png">
+		<link rel="stylesheet" href="scss/style.css" />
+		<script src="https://kit.fontawesome.com/0896c633d4.js" crossorigin="anonymous"></script>
+    </head>
 
-        <div class="box">
-          <label for="appliance"></label>
+    <body>
+        <header>
+            <div class="images">
+                <img class="logo" src="./assets/logo.png" alt="Logo Les petits plats">
+            </div>
+            <div class="search__bar">
+                <input type="search" id="site-search" name="q" aria-label="Search through site content"
+                    placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
+                <button type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </header>
+        <main id="content">
+            <aside class="research-tag">
+            </aside>
+            <nav id="filters">
+                <form class="first-filter">
+                    <div class="filter-button">
+                        <input type="search" class="ingredients-input filter-input" placeholder="Ingrédients">
+                        <button type="button"><img class="ingredients-button" src="./assets/more-filters.svg" alt="extend button"></button> 
+                    </div>
+                    <ul class="list-content ingredients__content"></ul>
+                </form>
+                <form class="second-filter">
+                    <div class="filter-button">
+                        <input type="search" class="appliances-input filter-input" placeholder="Appareils">
+                        <button type="button"><img class="appliances-button" src="./assets/more-filters.svg" alt="extend button"></button>
+                    </div>
+                    <ul class="list-content appliances__content"></ul>
+                </form>
+                <form class="third-filter">
+                    <div class="filter-button">
+                        <input type="search" class="ustensils-input filter-input" placeholder="Ustensiles">
+                        <button type="button"><img class="ustensils-button" src="./assets/more-filters.svg" alt="extend button"></button>
+                    </div>
+                    <ul class="list-content ustensils__content"></ul>
+                </form>
+            </nav>
+            <section id="recipes">
+            </section>
+        </main>
+        <script type="module" src="./scripts/app.js"></script>
+    </body>
 
-          <span class="style-input"
-            ><input type="text" id="appliance" class="select select--appareil" name="appareil" placeholder="Appareil" />
-            <span class="fas fa-angle-up logo-appliance"></span
-              ></span>
-              <div class="list-item"></div>
-        </div>
-        <div class="box">
-          <label for="ustensile"></label>
-
-          <span class="style-input"
-          ><input type="text" id="ustensile" class="select select--ustensile" name="ustensile" placeholder="Ustensiles" />
-          <span class="fas fa-angle-up logo-ustensil"></span
-            ></span>
-            <div class="list-ustenciles"></div>
-        </div>
-      </div>
-      <section class="recipes">
-        <h2 class="title-section">Résultat de votre recherche</h2>
-        <div class="all_recipes"></div>
-      </section>
-    </main>
-    <script type="module" src="scripts/app.js"></script>
-  </body>
 </html>

@@ -1,5 +1,5 @@
 // importer toutes les fonctions utilisées
-import { searchBar } from './firstAlgorithm.js'
+import { searchBar } from './secondAlgorithm.js'
 import { generateFiltersLists, displayListsInit, searchOnFiltersList, removeTags } from './filter.js'
 import { recipes } from './recipes.js'
 import { displayRecipes } from './functions.js'

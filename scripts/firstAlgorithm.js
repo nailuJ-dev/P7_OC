@@ -14,10 +14,11 @@ export function searchBar (recipesList) {
     // get filtered recipes object
     let filteredRecipes = recipesList.filter((recipe) => {
       const recipeIngredients = recipe.ingredients.map((element) => element.ingredient).toString()
+      console.log(recipeIngredients)
       return (
-        lowerCaseNormalize(recipe.name).includes(input) ||
-        lowerCaseNormalize(recipeIngredients).includes(input) ||
-        lowerCaseNormalize(recipe.description).includes(input)
+        // lowerCaseNormalize(recipe.name).includes(input) ||
+        lowerCaseNormalize(recipeIngredients).includes(input) // ||
+        // lowerCaseNormalize(recipe.description).includes(input)
       )
     })
 

@@ -31,6 +31,10 @@
   .usten {
     background: #ed6454;
   }
+  @media screen and (max-width: 1025px) {
+      margin: 25px 0 0 10px;
+      
+  }
 }
   
 // filters buttons
@@ -91,6 +95,9 @@
         &:focus {
           outline: none;
         }
+        @media screen and (max-width: 1025px) {
+            width: 100%;
+        }
       }
 
       button {
@@ -116,6 +123,12 @@
       border-radius: 5px;
       display: none;
       z-index: 10;
+      @media screen and (max-width: 1025px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media screen and (max-width: 674px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
  
       li {
         width: 200px;
@@ -132,5 +145,16 @@
         overflow: visible;
       }
     }
+  }
+  @media screen and (max-width: 1025px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 10px;
+      margin: 15px 20px 25px 20px;
+  }
+  @media only screen and (max-width: 674px) {
+    margin: 15px 20px 25px 10px;
+    grid-template-columns: 1fr;
+    margin-bottom: 200px;
   }
 }

@@ -108,16 +108,16 @@ function displayLists (obj, objlist, item, targetFilter) {
   if (targetFilter.includes(item) && obj.isFilterOpen == false) {
     for (let o of objlist) {
       o.content.style.display = 'none'
-      o.input.style.width = '170px'
+      o.input.style.width = '100%'
       o.isFilterOpen = false
     }
 
     obj.content.style.display = 'grid'
-    obj.input.style.width = '710px'
+    obj.input.style.width = '100%'
     obj.isFilterOpen = true
   } else if (targetFilter.includes(item) && obj.isFilterOpen == true) {
     obj.content.style.display = 'none'
-    obj.input.style.width = '170px'
+    obj.input.style.width = '100%'
     obj.isFilterOpen = false
   }
 }

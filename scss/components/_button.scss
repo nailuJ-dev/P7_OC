@@ -1,136 +1,159 @@
 // research tags
-
 .research-tag {
-  margin: 25px 0 0 100px;
+    margin: 25px 0 0 100px;
+    
+    .tag-item {
+      border-radius: 5px;
+      color: #fff;
+      margin-right: 15px;
+      font: 700 14px $first-typography;
+      justify-content: space-around;
+      align-items: center;
+      display: inline-flex;
+      flex-direction: row;
+      cursor: pointer;
+   
+      .text {
+        padding: 10px;
+      }
   
-  .tag-item {
-    border-radius: 5px;
-    color: #fff;
-    margin-right: 15px;
-    font: 700 14px $first-typography;
-    justify-content: space-around;
-    align-items: center;
-    display: inline-flex;
-    flex-direction: row;
-    cursor: pointer;
- 
-    .text {
-      padding: 10px;
+      img {
+        padding: 10px 10px 10px 5px;
+      }
     }
-
-    img {
-      padding: 10px 10px 10px 5px;
-    }
-  }
-  .ingred {
-    background: #3282f7;
-  }
-  .applia {
-    background: #68d9a4;
-  }
-  .usten {
-    background: #ed6454;
-  }
-}
-  
-// filters buttons
-  
-#filters {
-  margin: 15px 0px 25px 100px;
-  display: flex;
-  max-width: 1240px;
-  gap: 20px;
-  height: 70px;
-  z-index: 10;
- 
-  .first-filter {
-    z-index: 10;
-    input,
-    .ingredients__content {
+    .ingred {
       background: #3282f7;
     }
-  }
-  
-  .second-filter {
-    z-index: 10;
-    input,
-    .appliances__content {
+    .applia {
       background: #68d9a4;
     }
-  }
-  
-  .third-filter {
-    z-index: 10;
-    input,
-    .ustensils__content {
+    .usten {
       background: #ed6454;
     }
-  }
-  
-  form {
-    .filter-button {
-      position: relative;
-      height: 69px;
- 
-      input {
-        width: 170px;
-        height: 100%;
-        border-radius: $radius;
-        border: none;
-
-        color: #fff;
-        cursor: pointer;
-        font: 500 18px $second-typography;
-        padding-left: 26px;
-
-        &::placeholder {
-          color: #fff;
-        }
-  
-        &:active,
-        &:focus {
-          outline: none;
-        }
-      }
-
-      button {
-        position: absolute;
-        top: 28px;
-        right: 6%;
-        cursor: pointer;
-        background: none;
-        border: none;
-      }
+    @media screen and (max-width: 1025px) {
+        margin: 25px 0 0 10px;
+        
     }
-  
-    .list-content {
-      margin: -7px 0 0 0;
-      padding: 0;
-      color: #fff;
-      list-style: none;
-      font: 400 18px $first-typography;
-      grid-template-columns: repeat(3, 2fr);
-      grid-template-rows: 1fr;
-      gap: 10px 20px;
-      padding: 17.5px;
-      border-radius: 5px;
-      display: none;
+  }
+    
+  // filters buttons
+    
+  #filters {
+    margin: 15px 0px 25px 100px;
+    display: flex;
+    max-width: 1240px;
+    gap: 20px;
+    height: 70px;
+    z-index: 10;
+   
+    .first-filter {
       z-index: 10;
- 
-      li {
-        width: 200px;
-        gap: 20px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        cursor: pointer;
-        z-index: 10;
-      }
- 
-      .missing {
-        text-overflow: inherit;
-        overflow: visible;
+      input,
+      .ingredients__content {
+        background: #3282f7;
       }
     }
-  }
+    
+    .second-filter {
+      z-index: 10;
+      input,
+      .appliances__content {
+        background: #68d9a4;
+      }
+    }
+    
+    .third-filter {
+      z-index: 10;
+      input,
+      .ustensils__content {
+        background: #ed6454;
+      }
+    }
+    
+    form {
+      .filter-button {
+        position: relative;
+        height: 69px;
+   
+        input {
+          width: 170px;
+          height: 100%;
+          border-radius: $radius;
+          border: none;
+  
+          color: #fff;
+          cursor: pointer;
+          font: 500 18px $second-typography;
+          padding-left: 26px;
+  
+          &::placeholder {
+            color: #fff;
+          }
+    
+          &:active,
+          &:focus {
+            outline: none;
+          }
+          @media screen and (max-width: 1025px) {
+              width: 100%;
+          }
+        }
+  
+        button {
+          position: absolute;
+          top: 28px;
+          right: 6%;
+          cursor: pointer;
+          background: none;
+          border: none;
+        }
+      }
+    
+      .list-content {
+        margin: -7px 0 0 0;
+        padding: 0;
+        color: #fff;
+        list-style: none;
+        font: 400 18px $first-typography;
+        grid-template-columns: repeat(3, 2fr);
+        grid-template-rows: 1fr;
+        gap: 10px 20px;
+        padding: 17.5px;
+        border-radius: 5px;
+        display: none;
+        z-index: 10;
+        @media screen and (max-width: 1025px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @media screen and (max-width: 674px) {
+          grid-template-columns: repeat(1, 1fr);
+        }
+   
+        li {
+          width: 200px;
+          gap: 20px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          cursor: pointer;
+          z-index: 10;
+        }
+   
+        .missing {
+          text-overflow: inherit;
+          overflow: visible;
+        }
+      }
+    }
+    @media screen and (max-width: 1025px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 10px;
+        margin: 15px 20px 25px 20px;
+    }
+    @media only screen and (max-width: 674px) {
+      margin: 15px 20px 25px 10px;
+      grid-template-columns: 1fr;
+      margin-bottom: 200px;
+    }
 }

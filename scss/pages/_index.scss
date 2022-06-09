@@ -4,6 +4,7 @@ body {
   
     header {
       margin: 1rem;
+      width: auto;
       .images {
         display: flex;
         flex-direction: column;
@@ -52,6 +53,15 @@ body {
           right: 16px;
           top: 18px;
         }
+      }
+      @media screen and (max-width: 1025px) {
+          margin: 20px;
+          .search__bar {
+              margin-top: 20px;
+          }
+      }
+      @media only screen and (max-width: 674px) {
+        margin: 10px;
       }
     }
     
@@ -171,6 +181,22 @@ body {
               overflow: hidden;
             }
           }
+        }
+      }
+      @media only screen and (max-width: 1025px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: auto;
+        width: 95%;
+        .recipeCard {
+            width: 100%;
+        }
+      }
+      @media only screen and (max-width: 674px) {
+        grid-template-columns: 1fr;
+        .recipeCard {
+            width: 95%;
         }
       }
     }

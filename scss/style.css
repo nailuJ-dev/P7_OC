@@ -162,6 +162,7 @@ body {
 }
 body header {
   margin: 1rem;
+  width: auto;
 }
 body header .images {
   display: flex;
@@ -209,6 +210,19 @@ body header .search__bar button {
   position: absolute;
   right: 16px;
   top: 18px;
+}
+@media screen and (max-width: 1025px) {
+  body header {
+    margin: 20px;
+  }
+  body header .search__bar {
+    margin-top: 20px;
+  }
+}
+@media only screen and (max-width: 674px) {
+  body header {
+    margin: 10px;
+  }
 }
 body #recipes {
   display: flex;
@@ -314,4 +328,24 @@ body #recipes .recipeCard .textContent .textContentDown .description {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 6;
   overflow: hidden;
+}
+@media only screen and (max-width: 1025px) {
+  body #recipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: auto;
+    width: 95%;
+  }
+  body #recipes .recipeCard {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 674px) {
+  body #recipes {
+    grid-template-columns: 1fr;
+  }
+  body #recipes .recipeCard {
+    width: 95%;
+  }
 }/*# sourceMappingURL=style.css.map */
